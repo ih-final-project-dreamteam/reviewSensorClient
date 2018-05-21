@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'login', component: AuthComponent },
 ];
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +37,10 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+
     HttpModule,
     RouterModule.forRoot(routes)
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
