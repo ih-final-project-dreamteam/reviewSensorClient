@@ -3,7 +3,9 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-
+import { Observable } from 'rxjs/Rx';
+// import { Observable } from 'rxjs/Observable';
+// ^this doesn't give me nice errors
 
 @Injectable()
 
@@ -22,6 +24,7 @@ export class AuthService {
   }
 
   login(user) {
+    console.log(user);
     return this.http.post(`http://localhost:3000/api/login`, user)
       .map(res => res.json())
       .catch(this.handleError);
