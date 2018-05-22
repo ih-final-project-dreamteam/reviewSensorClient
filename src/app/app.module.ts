@@ -14,12 +14,15 @@ import { HotelDetailComponent } from './hotel-detail/hotel-detail.component';
 import { CreateTripComponent } from './create-trip/create-trip.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
+import { YelpService } from './services/yelp.service';
+import { DataService } from './services/data.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   { path: 'index',  component: LandingPageComponent },
   { path: 'signup', component: AuthComponent },
   { path: 'login', component: AuthComponent },
+  { path: 'hotel-list', component: HotelListComponent }
 ];
 
 
@@ -42,7 +45,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
 
   ],
-  providers: [AuthService],
+  providers: [AuthService, YelpService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
