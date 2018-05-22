@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AuthService } from './services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
 import { Router, NavigationEnd } from '@angular/router'
@@ -9,6 +11,7 @@ import { Router, NavigationEnd } from '@angular/router'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   constructor( private route: ActivatedRoute, private router: Router ) {}
 
   onAnchorClick ( ) {
@@ -29,7 +32,5 @@ export class AppComponent {
       }
     });
   }
-
-
 }
 
