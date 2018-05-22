@@ -8,38 +8,41 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private myService: AuthService) {}
+
   title = 'app';
 
-  formInfo: any = {username: '', password: ''};
-  user: any;
-  error: any;
+  // NO NEED FOR THESE INFORMATION HEAR. EVERYTHING IS ALREADY ADDED TO AUTH COMPONENT.
+  // constructor(private myService: AuthService) {}
+  // formInfo: any = {username: '', userFname: '', userLname: '', password: '', userTrips: '' }; // Rawan addition
+  // // formInfo: any = {username: '', password: ''};
+  // user: any;
+  // error: any;
 
 
-  login() {
-    this.myService.login(this.formInfo)
-    .subscribe(
-      (user) => this.user = user,
-      (err) => this.error = err
-    );
-  }
-  signup() {
-    this.myService.signup(this.formInfo)
-    .subscribe(
-      (user) => { this.user = user;
-      console.log(this.user);
-      },
-      (err) => this.error = err
-    );
-  }
+  // login() {
+  //   this.myService.login(this.formInfo)
+  //   .subscribe(
+  //     (user) => this.user = user,
+  //     (err) => this.error = err
+  //   );
+  // }
+  // signup() {
+  //   this.myService.signup(this.formInfo)
+  //   .subscribe(
+  //     (user) => { this.user = user;
+  //     console.log(this.user);
+  //     },
+  //     (err) => this.error = err
+  //   );
+  // }
 
-  logout() {
-    this.myService.logout()
-    .subscribe(
-      (user) => { this.user = null;
-      },
-      (err) => this.error = err
-    );
-  }
+  // logout() {
+  //   this.myService.logout()
+  //   .subscribe(
+  //     (user) => { this.user = null;
+  //     },
+  //     (err) => this.error = err
+  //   );
+  // }
 }
 

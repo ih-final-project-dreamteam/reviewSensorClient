@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
@@ -16,6 +15,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
 import { YelpService } from './services/yelp.service';
 import { DataService } from './services/data.service';
+import { LoginComponent } from './login/login.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
@@ -35,7 +36,8 @@ const routes: Routes = [
     HotelDetailComponent,
     CreateTripComponent,
     DashboardComponent,
-    TripDetailComponent
+    TripDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
