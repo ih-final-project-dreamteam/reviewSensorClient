@@ -1,1 +1,196 @@
-/* You can add global styles to this file, and also import other style files */
+/* COLORS USED */
+/* Transparent Header: rgba(0, 0, 0, 0.8) */
+/* White: #fff */
+/* Green: #00CA4C */
+
+
+/* ---------------------------------------------GLOBAL CSS--------------------------------------------- */
+* {
+  font-family: Avenir Next;
+}
+
+h1 { 
+  font-weight: 600 !important;
+  color: #fff;
+  font-size: 4rem !important;
+}
+
+h2 {
+  color: #222;
+}
+
+
+
+/* ---------------------------------------------Navbar--------------------------------------------- */
+.probootstrap_navbar.scrolled {
+  border-radius: 0px;
+}
+
+.probootstrap_navbar.scrolled {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  padding: 0;
+}
+
+
+
+/* ---------------------------------------------Navbar--------------------------------------------- */
+.footer p {
+  color: #222;
+}
+
+
+
+/* ---------------------------------------------LANDING PAGE--------------------------------------------- */
+/* Searchbar CSS */
+.probootstrap-form {
+  padding: 40px;
+  background: transparent;
+}
+
+.probootstrap-form .form-control {
+  border: 1px solid #fff;
+  background-color: rgba(250, 250, 250, .1);
+  height: 50px;
+  border-radius: 0px;
+}
+
+.form-control:focus {
+  color: #fff;
+}
+
+.form-control {
+  color: #fff
+}
+
+.probootstrap-form .form-control:active, .probootstrap-form .form-control:focus, .probootstrap-form .form-control:hover {
+  border: 2px solid #fff;
+}
+
+.input-group input::placeholder {
+  color: #eee;
+}
+
+.mb-3 {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+/* $ dropdown CSS */
+.select2-container--default .select2-selection--single, .select2-dropdown {
+  border: 1px solid #fff;
+  background-color: rgba(250, 250, 250, .1);
+  height: 50px;
+  width: 90px;
+  border-radius: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.select2-container {
+  width: 95px !important;
+}
+
+.select2-container--default .select2-selection--single:focus, .select2-dropdown:active, .select2-dropdown:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 2px solid #fff;
+}
+
+.select2-container--default .select2-selection--single:active, .select2-container--default .select2-selection--single:focus, .select2-dropdown:active, .select2-dropdown:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid #fff;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #fff;
+  line-height: 28px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: #fff transparent transparent transparent;
+  border-width: 7px 6px 0 6px;
+}
+
+body {
+  color: white;
+}
+
+/* Search button CSS */
+.btn {
+  background-color: #00CA4C;
+  border: none;
+  color: #fff;
+  height: 50px;
+  border-radius: 0px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.btn-default:hover {
+  color: #fff;
+  background-color: #00CA4C;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-default:active {
+  color: #fff;
+  background-color: #00CA4C;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-default:focus {
+  color: #fff;
+  background-color: #00CA4C;
+  border: none;
+  font-weight: bold;
+}
+
+
+/* ==========What We Do Section========== */
+
+.border-bottom {
+  margin-bottom: 0px;
+}
+
+.probootstrap_section {
+  padding: 4em 0;
+  padding-bottom: 0;
+}
+
+.body-text {
+  color: #222;
+}
+
+.probootstrap-section-half .probootstrap-text {
+  background: transparent;
+}
+
+.probootstrap-section-half .probootstrap-text .probootstrap-inner {
+  padding: 5em;
+}
+
+.mb-5 {
+  margin-bottom: 0 !important;
+}
+
+.probootstrap-section-half .probootstrap-image, .probootstrap-section-half .probootstrap-text {
+  width: 50%;
+  /* height: 100px; */
+  margin: 60px;
+}
+
+#subheader {
+  margin-top: 2em;
+}
+
+.list {
+  /* width: 80%; */
+  margin-top: 3em;
+}
