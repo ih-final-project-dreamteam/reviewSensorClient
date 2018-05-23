@@ -16,11 +16,11 @@ searchTerm: any = '';
 
 
 
-goToHotelList(searchVal) {
-    this.searchTerm = searchVal;
-    return this.http.get(`http://localhost:3000/yelp/${searchVal}`, {})
-    .map((responseFromApi) => responseFromApi.json());
-}
+// goToHotelList(searchVal) {
+//     this.searchTerm = searchVal;
+//     return this.http.get(`http://localhost:3000/yelp/${searchVal}`, {})
+//     .map((responseFromApi) => responseFromApi.json());
+// }
 
 
 

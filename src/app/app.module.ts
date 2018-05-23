@@ -16,6 +16,7 @@ import { TripDetailComponent } from './trip-detail/trip-detail.component';
 import { YelpService } from './services/yelp.service';
 import { DataService } from './services/data.service';
 import { LoginComponent } from './login/login.component';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
 const routes: Routes = [
@@ -42,10 +43,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-
     HttpModule,
-    RouterModule.forRoot(routes)
-
+    RouterModule.forRoot(routes),
+    ScrollToModule.forRoot()
   ],
   providers: [AuthService, YelpService, DataService],
   bootstrap: [AppComponent]

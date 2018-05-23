@@ -17,13 +17,13 @@ export class HotelListComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.dataService.dataFromService === undefined) {
-      this.dataService.dataFromService = 'Miami';
-    }
-    this.myService.goToHotelList(this.dataService.dataFromService)
-    .subscribe((theList) => {
-      this.allTheHotels = theList;
-    });
+    // if (this.dataService.dataFromService === undefined) {
+    //   this.dataService.dataFromService = 'Miami';
+    // }
+    // this.myService.goToHotelList(this.dataService.dataFromService)
+    // .subscribe((theList) => {
+    //   this.allTheHotels = theList;
+    // });
   }
 }
 
