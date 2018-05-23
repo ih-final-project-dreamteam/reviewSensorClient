@@ -22,7 +22,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   { path: 'index',  component: LandingPageComponent },
   { path: 'signup', component: AuthComponent },
-  { path: 'login', component: AuthComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LoginComponent},
   { path: 'hotel-list', component: HotelListComponent }
 ];
 

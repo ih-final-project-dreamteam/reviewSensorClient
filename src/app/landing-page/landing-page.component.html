@@ -1,3 +1,24 @@
+<!-- TOP NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">ReviewSensor</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span>
+        <i class="ion-navicon"></i>
+      </span>
+    </button>
+    <div class="collapse navbar-collapse logged-out-nav" id="probootstrap-menu">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/']">About</a></li> -->
+        <!-- <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="about" (click)="onAnchorClick()">About</a></li>-->
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign Up</a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/login']" (click)="refresh()">Log In</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <section class="probootstrap-cover overflow-hidden relative" style="background-image: url('https://images.unsplash.com/photo-1445991842772-097fea258e7b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a9a4d583946e2bbbe92795a319da3611&auto=format&fit=crop&w=800&q=60');"
   data-stellar-background-ratio="0.5" id="section-home">
   <div class="overlay"></div>
@@ -17,7 +38,7 @@
                     <div class="probootstrap_select-wrap">
                       <form action="#">
                         <div class="input-group">
-                          <input type="text" class="form-control" placeholder="What is your destination city?" name="search">
+                          <input type="text" class="form-control" [(ngModel)]= "searchTerm" placeholder="What is your destination city?" name="search">
                           <div class="form-group">
                             <select class="js-example-basic-single js-states form-control" id="id_label_single">
                               <option value="$">$</option>
@@ -27,7 +48,7 @@
                             </select>
                           </div>
                           <div>
-                            <button class="btn btn-default search-button" type="submit">FIND HOTELS</button>
+                            <button class="btn btn-default search-button" type="submit" (click)= "goToHotelList()">FIND HOTELS</button>
                           </div>
                         </div>
                         <!-- END input-group -->
@@ -65,7 +86,7 @@
   <div class="probootstrap-text order-1">
     <div class="probootstrap-inner probootstrap-animate body-text" data-animate-effect="fadeInLeft">
       <h2 class="heading mb-4">Simple Search</h2>
-      <p>Run a simple search by location and budget. Using the Yelp API, we find the most reviewed hotels in that area which
+      <p> {{user.username}} Run a simple search by location and budget. Using the Yelp API, we find the most reviewed hotels in that area which
         are within your budget.</p>
       <h2 class="heading mb-4" id="subheader">Natural Language Processing</h2>
       <p>We read the reviews so you don't have to. We use IBM Watson's natural language processing capabilities to read through
