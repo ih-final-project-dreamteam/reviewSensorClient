@@ -1,5 +1,6 @@
-<!-- TOP NAV -->
-<nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
+
+<!-- ===============TOP NAV================ -->
+<nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar landingTopnav" id="probootstrap-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">ReviewSensor</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
@@ -10,15 +11,23 @@
     </button>
     <div class="collapse navbar-collapse logged-out-nav" id="probootstrap-menu">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" [routerLink]="['/']">About</a></li> -->
-        <!-- <li class="nav-item"><a class="nav-link" [routerLink]="['/']" fragment="about" (click)="onAnchorClick()">About</a></li>-->
-        <li class="nav-item"><a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign Up</a></li>
-        <li class="nav-item"><a class="nav-link" [routerLink]="['/login']" (click)="refresh()">Log In</a></li>
+
+        <li class="nav-item">
+          <a class="nav-link" [ngx-scroll-to]="'#about'">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']" (click)="refresh()">Log In</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
+
+<!-- ===========HEADER SECTION============ -->
 <section class="probootstrap-cover overflow-hidden relative" style="background-image: url('https://images.unsplash.com/photo-1445991842772-097fea258e7b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a9a4d583946e2bbbe92795a319da3611&auto=format&fit=crop&w=800&q=60');"
   data-stellar-background-ratio="0.5" id="section-home">
   <div class="overlay"></div>
@@ -28,17 +37,18 @@
         <h1 class="heading mb-2 display-4 font-light probootstrap-animate">Never read another review again.</h1>
         <div class="col-md probootstrap-animate">
           <!-- search box -->
-          <form action="#" class="probootstrap-form">
+          <form action="#" class="probootstrap-form searchbar">
             <div class="form-group">
-              <div class="row mb-3">
+              <div class="row mb-3 centerClass">
                 <!-- row -->
                 <div class="col-md-10">
                   <!-- column  1 -->
                   <div class="form-group">
                     <div class="probootstrap_select-wrap">
                       <form action="#">
-                        <div class="input-group">
-                          <input type="text" class="form-control" [(ngModel)]= "searchTerm" placeholder="What is your destination city?" name="search">
+                        <div class="input-group budgetDropdown">
+                          <input type="text" class="form-control searchInput" [(ngModel)]="searchTerm" placeholder="What is your destination city?"
+                            name="search">
                           <div class="form-group">
                             <select class="js-example-basic-single js-states form-control" id="id_label_single">
                               <option value="$">$</option>
@@ -48,7 +58,7 @@
                             </select>
                           </div>
                           <div>
-                            <button class="btn btn-default search-button" type="submit" (click)= "goToHotelList()">FIND HOTELS</button>
+                            <button class="btn btn-default search-button" type="submit" (click)="goToHotelList()">FIND HOTELS</button>
                           </div>
                         </div>
                         <!-- END input-group -->
@@ -71,20 +81,22 @@
 </section>
 <!-- END header section -->
 
-<section class="probootstrap_section">
+
+<!-- ===========WHAT WE DO SECTION============ -->
+<section class="probootstrap_section section" id="about">
   <div class="container">
     <div class="row text-center mb-5">
       <div class="col-md-12">
-        <h2 class="display-4 border-bottom probootstrap-section-heading" id="about">What We Do</h2>
+        <h2 class="display-4 border-bottom probootstrap-section-heading underline">What We Do</h2>
       </div>
     </div>
   </div>
 </section>
 
-<section class="probootstrap-section-half d-md-flex">
-  <div class="probootstrap-image order-2 probootstrap-animate" data-animate-effect="fadeIn" style="background-image: url(assets/images/img_3.jpg)"></div>
-  <div class="probootstrap-text order-1">
-    <div class="probootstrap-inner probootstrap-animate body-text" data-animate-effect="fadeInLeft">
+<section class="probootstrap-section-half d-md-flex halfSection">
+  <div class="probootstrap-image order-2 probootstrap-animate halfImage" data-animate-effect="fadeIn" style="background-image: url(assets/images/img_3.jpg)"></div>
+  <div class="probootstrap-text textClass order-1">
+    <div class="probootstrap-inner probootstrap-animate body-text inner" data-animate-effect="fadeInLeft">
       <h2 class="heading mb-4">Simple Search</h2>
       <p> {{user.username}} Run a simple search by location and budget. Using the Yelp API, we find the most reviewed hotels in that area which
         are within your budget.</p>
@@ -95,440 +107,56 @@
   </div>
 </section>
 
-
-<section class="probootstrap_section">
+<!-- ===========WHO WE ARE SECTION============ -->
+<section class="probootstrap_section section probootstrap-border-top" id="section-feature-testimonial">
   <div class="container">
-    <div class="row justify-content-md-center mb-5">
-      <div class="col-md-8 mb-5 probootstrap-animate">
-        <h2 class="display-4 border-bottom text-center probootstrap-section-heading">How It Works</h2>
-
-        <section class="list justify-content-md-center">
-          <div class="probootstrap-text">
-            <div class="probootstrap-inner probootstrap-animate body-text justify-content-md-center" data-animate-effect="fadeInLeft">
-              <h2 class="heading mb-4">Search by Destination</h2>
-              <p>Run a simple search by location and budget. Using the Yelp API, we find the most reviewed hotels in that area
-                which are within your budget.</p>
-              <h2 class="heading mb-4" id="subheader">Natural Language Processing</h2>
-              <p>We read the reviews so you don't have to. We use IBM Watson's natural language processing capabilities to read
-                through all the reviews for each hotel and show you the overall sentiment, emotion, and keywords.</p>
-              <p>
-                <a href="#" class="btn btn-primary">SIGN UP</a>
-              </p>
-            </div>
-          </div>
-        </section>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- END section -->
-
-
-<section class="probootstrap_section" id="section-city-guides">
-  <div class="container">
-    <div class="row text-center mb-5 probootstrap-animate">
-      <div class="col-md-12">
-        <h2 class="display-4 border-bottom probootstrap-section-heading">Top Places Around The World</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
-        <a href="#" class="probootstrap-thumbnail">
-          <img src="assets/images/img_1.jpg" alt="Free Template by ProBootstrap.com" class="img-fluid">
-          <div class="probootstrap-text">
-            <h3>Buena</h3>
-          </div>
-        </a>
-      </div>
-      <div class="col-lg-3 col-md-6 probootstrap-animate mb-3">
-        <a href="#" class="probootstrap-thumbnail">
-          <img src="assets/images/img_2.jpg" alt="Free Template by ProBootstrap.com" class="img-fluid">
-          <h3>Road</h3>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END section -->
-
-<section class="probootstrap_section">
-  <div class="container">
-    <div class="row text-center mb-5 probootstrap-animate">
-      <div class="col-md-12">
-        <h2 class="display-4 border-bottom probootstrap-section-heading">Travel With Us</h2>
-      </div>
-    </div>
-
-    <div class="row probootstrap-animate">
-      <div class="col-md-12">
-        <div class="owl-carousel js-owl-carousel">
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-teatro-de-la-caridad"></span>
-            <em>Teatro de la Caridad</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-royal-museum-of-the-armed-forces"></span>
-            <em>Royal Museum of the Armed Forces</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-parthenon"></span>
-            <em>Parthenon</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-marina-bay-sands"></span>
-            <em>Marina Bay Sands</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-samarra-minaret"></span>
-            <em>Samarra Minaret</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-chiang-kai-shek-memorial"></span>
-            <em>Chiang Kai Shek Memorial</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-heuvelse-kerk-tilburg"></span>
-            <em>Heuvelse Kerk Tilburg</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-cathedral-of-cordoba"></span>
-            <em>Cathedral of Cordoba</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-london-bridge"></span>
-            <em>London Bridge</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-taj-mahal"></span>
-            <em>Taj Mahal</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-leaning-tower-of-pisa"></span>
-            <em>Leaning Tower of Pisa</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-burj-al-arab"></span>
-            <em>Burj al Arab</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-gate-of-india"></span>
-            <em>Gate of India</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-osaka-castle"></span>
-            <em>Osaka Castle</em>
-          </a>
-          <a class="probootstrap-slide" href="#">
-            <span class="flaticon-statue-of-liberty"></span>
-            <em>Statue of Liberty</em>
-          </a>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END section -->
-
-<section class="probootstrap_section bg-light">
-  <div class="container">
-    <div class="row text-center mb-5 probootstrap-animate">
-      <div class="col-md-12">
-        <h2 class="display-4 border-bottom probootstrap-section-heading">More Services</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-
-        <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-          <div class="probootstrap-media-image" style="background-image: url(assets/images/img_1.jpg)">
-          </div>
-          <div class="media-body">
-            <h5 class="mb-3">01. Service Title Here</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. </p>
-          </div>
-        </div>
-
-        <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-          <div class="probootstrap-media-image" style="background-image: url(assets/images/img_2.jpg)">
-          </div>
-          <div class="media-body">
-            <h5 class="mb-3">02. Service Title Here</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. </p>
-          </div>
-        </div>
-
-      </div>
-      <div class="col-md-6">
-
-        <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-          <div class="probootstrap-media-image" style="background-image: url(assets/images/img_4.jpg)">
-          </div>
-          <div class="media-body">
-            <h5 class="mb-3">03. Service Title Here</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. </p>
-          </div>
-        </div>
-
-        <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-          <div class="probootstrap-media-image" style="background-image: url(assets/images/img_5.jpg)">
-          </div>
-          <div class="media-body">
-            <h5 class="mb-3">04. Service Title Here</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END section -->
-
-<section class="probootstrap_section" id="section-feature-testimonial">
-  <div class="container">
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-12 text-center mb-5 probootstrap-animate">
-        <h2 class="display-4 border-bottom probootstrap-section-heading">Testimonial</h2>
-        <blockquote class="">
-          <p class="lead mb-4">
-            <em>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A
-              small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic
-              country, in which roasted parts of sentences fly into your mouth.</em>
-          </p>
-          <p class="probootstrap-author">
-            <a href="https://probootstrap.com/" target="_blank">
-              <img src="assets/images/person_1.jpg" alt="Free Template by ProBootstrap.com" class="rounded-circle">
-              <span class="probootstrap-name">James Smith</span>
-              <span class="probootstrap-title">Chief Executive Officer</span>
+    <h2 class="display-4 border-bottom underline probootstrap-section-heading justify-content-center subheading">Who We Are</h2>
+    <div class="row spaceEvenly mb-5">
+      <!-- <div class="col-md-12 text-center mb-5 probootstrap-animate"> -->
+      <p class="probootstrap-author profile">
+        <a href="https://probootstrap.com/" target="_blank">
+          <img src="assets/images/rawan.png" alt="Free Template by ProBootstrap.com" class="rounded-circle">
+          <span class="probootstrap-name name">Rawan Alfaiz</span>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/rawanalfaiz/">
+              <i class="fa fa-linkedin-square" style="font-size:24px"></i>
             </a>
-          </p>
-        </blockquote>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- END section -->
-
-<section class="probootstrap_section bg-light">
-  <div class="container">
-    <div class="row text-center mb-5 probootstrap-animate">
-      <div class="col-md-12">
-        <h2 class="display-4 border-bottom probootstrap-section-heading">News</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-
-        <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-          <div class="probootstrap-media-image" style="background-image: url(assets/images/img_1.jpg)">
+            <a href="https://github.com/rawanalfaiz">
+              <i class="fa fa-github-square" style="font-size:24px"></i>
+            </a>
           </div>
-          <div class="media-body">
-            <span class="text-uppercase">January 1st 2018</span>
-            <h5 class="mb-3">Travel To United States Without Visa</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. </p>
-            <p>
-              <a href="#">Read More</a>
-            </p>
+        </a>
+      </p>
+      <p class="probootstrap-author profile">
+        <a href="https://probootstrap.com/" target="_blank">
+          <img src="assets/images/dali.jpeg" alt="Free Template by ProBootstrap.com" class="rounded-circle">
+          <span class="probootstrap-name name">Dali Rojas</span>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/dalirojas/">
+              <i class="fa fa-linkedin-square" style="font-size:24px"></i>
+            </a>
+            <a href="https://github.com/rojasdali">
+              <i class="fa fa-github-square" style="font-size:24px"></i>
+            </a>
           </div>
-        </div>
-
-        <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-          <div class="probootstrap-media-image" style="background-image: url(assets/images/img_2.jpg)">
+        </a>
+      </p>
+      <p class="probootstrap-author profile">
+        <a href="https://probootstrap.com/" target="_blank">
+          <img src="assets/images/eleyni.png" alt="Free Template by ProBootstrap.com" class="rounded-circle">
+          <span class="probootstrap-name name">Eleyni Rodriguez</span>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/eleyni-rodriguez/">
+              <i class="fa fa-linkedin-square" style="font-size:24px"></i>
+            </a>
+            <a href="https://github.com/erodrig1010">
+              <i class="fa fa-github-square" style="font-size:24px"></i>
+            </a>
           </div>
-          <div class="media-body">
-            <span class="text-uppercase">January 1st 2018</span>
-            <h5 class="mb-3">Travel To United States Without Visa</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. </p>
-            <p>
-              <a href="#">Read More</a>
-            </p>
-          </div>
-        </div>
-
-      </div>
-      <div class="col-md-6">
-
-        <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-          <div class="probootstrap-media-image" style="background-image: url(assets/images/img_4.jpg)">
-          </div>
-          <div class="media-body">
-            <span class="text-uppercase">January 1st 2018</span>
-            <h5 class="mb-3">Travel To United States Without Visa</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. </p>
-            <p>
-              <a href="#">Read More</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="media probootstrap-media d-flex align-items-stretch mb-4 probootstrap-animate">
-          <div class="probootstrap-media-image" style="background-image: url(assets/images/img_5.jpg)">
-          </div>
-          <div class="media-body">
-            <span class="text-uppercase">January 1st 2018</span>
-            <h5 class="mb-3">Travel To United States Without Visa</h5>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-              texts. </p>
-            <p>
-              <a href="#">Read More</a>
-            </p>
-          </div>
-        </div>
-
-      </div>
+        </a>
+      </p>
+      <!-- </div> -->
     </div>
   </div>
+  <!-- END container -->
 </section>
-<!-- END section -->
-
-<section class="probootstrap_section">
-  <div class="container">
-    <div class="row text-center mb-5 probootstrap-animate">
-      <div class="col-md-12">
-        <h2 class="display-4 border-bottom probootstrap-section-heading">Travel With Us</h2>
-      </div>
-    </div>
-
-    <div class="row probootstrap-animate">
-      <div class="col-md-12">
-        <div class="owl-carousel js-owl-carousel-2">
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_2.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_1.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_3.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_4.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_5.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_2.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_1.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_3.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_4.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-          <div>
-            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
-              <img src="assets/images/sq_img_5.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
-              <div class="media-body">
-                <h5 class="mb-3">02. Service Title Here</h5>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-                  texts. </p>
-              </div>
-            </div>
-          </div>
-          <!-- END slide item -->
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- END section -->

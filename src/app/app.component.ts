@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import { Component, OnInit} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from './services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { RouterModule, Routes } from '@angular/router';
 import { Router, NavigationEnd } from '@angular/router';
+=======
+import { Component } from '@angular/core';
+>>>>>>> f14d49441f94d2eec0d9b7d7ed6e3c95d7fec5ba
 
 @Component({
   selector: 'app-root',
@@ -12,6 +16,7 @@ import { Router, NavigationEnd } from '@angular/router';
 })
 export class AppComponent {
 
+<<<<<<< HEAD
   constructor( private route: ActivatedRoute, private router: Router ) {}
 
   // onAnchorClick ( ) {
@@ -32,5 +37,7 @@ export class AppComponent {
   //     }
   //   });
   // }
+=======
+>>>>>>> f14d49441f94d2eec0d9b7d7ed6e3c95d7fec5ba
 }
 

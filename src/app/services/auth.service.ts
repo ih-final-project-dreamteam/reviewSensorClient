@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+<<<<<<< HEAD
 // import { Observable } from 'rxjs/Rx';
+=======
+import { Observable } from 'rxjs/rx';
+>>>>>>> f14d49441f94d2eec0d9b7d7ed6e3c95d7fec5ba
 // import { Observable } from 'rxjs/Observable';
 // ^this doesn't give me nice errors
+import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
+
 
 @Injectable()
 
