@@ -22,11 +22,31 @@ h2 {
 
 
 /* ---------------------------------------------Navbar--------------------------------------------- */
-.probootstrap_navbar.scrolled {
+.landingTopnav.scrolled {
   border-radius: 0px;
 }
 
-.probootstrap_navbar.scrolled {
+.landingTopnav.scrolled {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  padding: 0;
+}
+
+.topnav {
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 0px;
+  padding: 0;
+  position: relative;
+}
+
+.topnav.scrolled {
+  border-radius: 0px;
+}
+
+.topnav.scrolled {
   background: rgba(0, 0, 0, 0.8);
   position: fixed;
   right: 0;
@@ -36,45 +56,48 @@ h2 {
 }
 
 
-
-/* ---------------------------------------------Navbar--------------------------------------------- */
+/* ---------------------------------------------Footer--------------------------------------------- */
 .footer p {
   color: #222;
 }
 
+.footerContainer {
+  padding: 0;
+  margin-top: 3em;
+}
 
 
 /* ---------------------------------------------LANDING PAGE--------------------------------------------- */
 /* Searchbar CSS */
-.probootstrap-form {
+.searchbar {
   padding: 40px;
   background: transparent;
 }
 
-.probootstrap-form .form-control {
+.searchbar .searchInput {
   border: 1px solid #fff;
   background-color: rgba(250, 250, 250, .1);
   height: 50px;
   border-radius: 0px;
 }
 
-.form-control:focus {
+.searchInput:focus {
   color: #fff;
 }
 
-.form-control {
+.searchInput {
   color: #fff
 }
 
-.probootstrap-form .form-control:active, .probootstrap-form .form-control:focus, .probootstrap-form .form-control:hover {
+.searchbar .searchInput:active, .searchbar .searchInput:focus, .searchbar .searchInput:hover {
   border: 2px solid #fff;
 }
 
-.input-group input::placeholder {
+.budgetDropdown input::placeholder {
   color: #eee;
 }
 
-.mb-3 {
+.centerClass {
   justify-content: center;
   margin-bottom: 0;
 }
@@ -155,11 +178,11 @@ body {
 
 /* ==========What We Do Section========== */
 
-.border-bottom {
+.underline {
   margin-bottom: 0px;
 }
 
-.probootstrap_section {
+.section {
   padding: 4em 0;
   padding-bottom: 0;
 }
@@ -168,11 +191,11 @@ body {
   color: #222;
 }
 
-.probootstrap-section-half .probootstrap-text {
+.halfSection .textClass {
   background: transparent;
 }
 
-.probootstrap-section-half .probootstrap-text .probootstrap-inner {
+.halfSection .textClass .inner {
   padding: 5em;
 }
 
@@ -180,7 +203,7 @@ body {
   margin-bottom: 0 !important;
 }
 
-.probootstrap-section-half .probootstrap-image, .probootstrap-section-half .probootstrap-text {
+.halfSection .halfImage, .halfSection .textClass {
   width: 50%;
   /* height: 100px; */
   margin: 60px;
@@ -193,4 +216,56 @@ body {
 .list {
   /* width: 80%; */
   margin-top: 3em;
+}
+
+
+/* ==========Who We Are Section========== */
+
+.subheading {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.profile {
+  text-align: center;
+  align-items: baseline;
+}
+
+.profile img {
+  width: 100px !important;
+  margin-bottom: 15px !important;
+}
+
+.name {
+  margin-bottom: 5px;
+}
+
+.spaceEvenly {
+  justify-content: space-evenly !important;
+  align-items: baseline;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+}
+
+.social a {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+
+
+/* ----------------------------------------HOTEL LIST PAGE--------------------------------------------- */
+.hotel-list {
+  padding-top: 3em;
+}
+
+.list-header {
+  margin-bottom: 1em;
+  text-transform: capitalize;
+  font-size: 2em;
+  font-weight: 500 !important;
+  color: #00CA4C;
 }
