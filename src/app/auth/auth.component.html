@@ -1,31 +1,5 @@
-<!-- #00CA4C green color -->
-<!-- <h1> Authentication page </h1>
-<form>
-  <h2> Signup </h2>
-  <label> Email </label>
-  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
-  <br>
-  <label> First name </label>
-  <input type="text" [(ngModel)]="formInfo.userFname" name="userFname"/>
-  <br>
-  <label> Last name </label>
-  <input type="text" [(ngModel)]="formInfo.userLname" name="userLname"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
-  <br> -->
-  <!-- <label> Email </label>
-  <input type="email" [(ngModel)]="formInfo.userEmail" name="userEmail"/> -->
-  <!-- <br>   -->
- <!-- <button (click)="login()"> login </button> 
-  <button (click)="signup()"> signup </button>
-</form>
 
-
-
-
-
-<div *ngIf="user">
+<!-- <div *ngIf="user">
   <h2> You are now logged in as {{ user.username }}!! </h2>
   <p> Here's the user object </p>
   <pre> {{ user | json }} </pre> // to show the user data in DB in a preaty json form -->  
@@ -38,26 +12,47 @@
 <!-- </div> -->
 
 <!-- =========================================================================== -->
-    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
+<!-- if the user is not logged in yet show this nav bar -->
+<div *ngIf="!user">
+    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
       <div class="container">
-        <a class="navbar-brand" [routerLink]="['/']" > Home </a>
+        <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> Home </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="ion-navicon"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="probootstrap-menu">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/']">About</a></li>
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/signup']">Sign up</a></li>
-            <li class="nav-item"><a class="nav-link" [routerLink]="['/login']" >Log in</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/#about']"(click)="refresh()">About</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign up</a></li>
+            <li class="nav-item"><a class="nav-link" [routerLink]="['/login']" (click)="refresh()">Log in</a></li>
           </ul>
         </div>
       </div>
     </nav>
+  </div>
+  <!-- if the user is logged in yet show this nav bar -->
+  <div *ngIf="user">
+    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
+      <div class="container">
+          <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> Welcome {{ user.userFname }} </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="ion-navicon"></i></span>
+          </button>
+          <div class="collapse navbar-collapse" id="probootstrap-menu">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><a class="nav-link" [routerLink]="['/#about']"(click)="refresh()">About</a></li>
+              <li class="nav-item"><a class="nav-link" [routerLink]="['#']" (click)="refresh()">Your Account</a></li>
+              <li class="nav-item"><a class="nav-link" [routerLink]="['/logout']" (click)="refresh()">Log out</a></li>
+            </ul>
+          </div>
+      </div>
+    </nav>
+  </div>
     <!-- END nav -->
     
     <section class="probootstrap_section bg-light" id="section-contact">
-      <div class="container"> 
-        <!-- <div class="row"> -->
+      <div class="container row"> 
+        <div class="col-md-6 col-md-offset-5">
           <div class="probootstrap-animate">
             <form class="probootstrap-form probootstrap-form-box">
               
@@ -65,14 +60,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="fname" class="sr-only sr-only-focusable">First Name</label>
-                    <input type="text" class="form-control" id="fname" name="fname" placeholder="First Name"/>
+                    <input type="text" [(ngModel)]="formInfo.userFname" class="form-control" id="fname" name="fname" placeholder="First Name"/>
                   </div>
                 </div>
-                
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="lname" class="sr-only sr-only-focusable">Last Name</label>
-                    <input type="text" class="form-control" id="lname" name="lname" placeholder="Last Name"/>
+                    <input type="text" [(ngModel)]="formInfo.userLname"class="form-control" id="lname" name="lname" placeholder="Last Name"/>
                   </div>
                 </div>
               </div>
@@ -95,7 +89,7 @@
 
             </form>
           </div>
-        <!-- </div> -->
+        </div>
       </div>
     </section>
     <!-- END section -->

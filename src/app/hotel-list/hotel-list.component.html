@@ -1,7 +1,123 @@
-<p>
+<!-- ===============TOP NAV================ -->
+<nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">ReviewSensor</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span>
+        <i class="ion-navicon"></i>
+      </span>
+    </button>
+    <div class="collapse navbar-collapse logged-out-nav" id="probootstrap-menu">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [ngx-scroll-to]="'#about'">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']" (click)="refresh()">Log In</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- <p>
   hotel-list works!
 </p>
 <div *ngFor = "let hotel of allTheHotels">
-  {{hotel.name}}
   <img [src]="hotel.image_url" alt="">
-</div>
+  {{hotel.name}}
+</div> -->
+
+
+
+
+<section class="probootstrap_section hotel-list">
+  <div class="container">
+    <div class="row mb-5 probootstrap-animate">
+      <div class="col-md-12">
+        <h2 class="display-4 probootstrap-section-heading list-header">hotels in miami</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
+          <img src="assets/images/sq_img_2.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
+          <div class="media-body">
+            <h5 class="mb-3">Hotel Name</h5>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+              texts. </p>
+          </div>
+        </div>
+      </div>
+      <!-- END slide item -->
+
+      <div class="col-md-3">
+        <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
+          <img src="assets/images/sq_img_1.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
+          <div class="media-body">
+            <h5 class="mb-3">02. Service Title Here</h5>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+              texts. </p>
+          </div>
+        </div>
+      </div>
+      <!-- END slide item -->
+
+      <div class="col-md-3">
+        <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
+          <img src="assets/images/sq_img_3.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
+          <div class="media-body">
+            <h5 class="mb-3">02. Service Title Here</h5>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+              texts. </p>
+          </div>
+        </div>
+      </div>
+      <!-- END slide item -->
+
+          <div class="col-md-3">
+            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
+              <img src="assets/images/sq_img_2.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
+              <div class="media-body">
+                <h5 class="mb-3">02. Service Title Here</h5>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+                  texts. </p>
+              </div>
+            </div>
+          </div>
+          <!-- END slide item -->
+    
+          <div class="col-md-3">
+            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
+              <img src="assets/images/sq_img_1.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
+              <div class="media-body">
+                <h5 class="mb-3">02. Service Title Here</h5>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+                  texts. </p>
+              </div>
+            </div>
+          </div>
+          <!-- END slide item -->
+    
+          <div class="col-md-3">
+            <div class="media probootstrap-media d-block align-items-stretch mb-4 probootstrap-animate">
+              <img src="assets/images/sq_img_3.jpg" alt="Free Template by ProBootstrap" class="img-fluid">
+              <div class="media-body">
+                <h5 class="mb-3">02. Service Title Here</h5>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
+                  texts. </p>
+              </div>
+            </div>
+          </div>
+          <!-- END slide item -->
+
+    </div>
+  </div>
+</section>
+<!-- END section -->
