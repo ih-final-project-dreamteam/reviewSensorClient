@@ -17,15 +17,17 @@ import { YelpService } from './services/yelp.service';
 import { WatsonService } from './services/watson.service';
 import { DataService } from './services/data.service';
 import { LoginComponent } from './login/login.component';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   { path: 'index',  component: LandingPageComponent },
   { path: 'signup', component: AuthComponent },
-  { path: 'login', component: AuthComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'hotel-list/:searchTerm', component: HotelListComponent },
   { path: 'hotel-list/:searchTerm', component: HotelDetailComponent }
+
 ];
 
 
@@ -44,10 +46,9 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-
     HttpModule,
-    RouterModule.forRoot(routes)
-
+    RouterModule.forRoot(routes),
+    ScrollToModule.forRoot()
   ],
   providers: [AuthService, YelpService, DataService, WatsonService],
   bootstrap: [AppComponent]
