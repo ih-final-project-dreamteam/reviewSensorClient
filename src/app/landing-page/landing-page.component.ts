@@ -21,18 +21,18 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {
     // THIS SHOULD BE ADDED TO EVERY COMPONENT WE WANT TO MAKE PRIVATE. IT SHOULD NOT BE IN PUBLIC COMPONENTS.
-    this.myAuth.isLoggedIn()
-    .then( () => {
-      this.user = this.myAuth.currentUser;
-      if (this.user === null) {
-        this.router.navigate(['/login']);
-      }
-      // console.log('user in landing: ', this.user);
-    } )
-    .catch( err =>  {
-      console.log('err in landing ======= : ', err);
-      this.router.navigate(['/login']);
-     });
+    // this.myAuth.isLoggedIn()
+    // .then( () => {
+    //   this.user = this.myAuth.currentUser;
+    //   if (this.user === null) {
+    //     this.router.navigate(['/login']);
+    //   }
+    //   // console.log('user in landing: ', this.user);
+    // } )
+    // .catch( err =>  {
+    //   console.log('err in landing ======= : ', err);
+    //   this.router.navigate(['/login']);
+    //  });
 
   }
 
