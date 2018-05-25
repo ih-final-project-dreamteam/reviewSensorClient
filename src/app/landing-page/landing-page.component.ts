@@ -16,7 +16,7 @@ export class LandingPageComponent implements OnInit {
   }
   goToHotelList() {
     this.dataService.dataFromService = this.searchTerm;
-      this.router.navigate(['/hotel-list']);
+      this.router.navigate([`/hotel-list/${this.searchTerm}`]);
   }
 
 }

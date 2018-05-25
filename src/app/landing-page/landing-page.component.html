@@ -17,7 +17,7 @@
                     <div class="probootstrap_select-wrap">
                       <form action="#">
                         <div class="input-group">
-                          <input type="text" class="form-control" placeholder="What is your destination city?" name="search">
+                          <input type="text" class="form-control" [(ngModel)] = "searchTerm" placeholder="What is your destination city?" name="search">
                           <div class="form-group">
                             <select class="js-example-basic-single js-states form-control" id="id_label_single">
                               <option value="$">$</option>
@@ -27,7 +27,7 @@
                             </select>
                           </div>
                           <div>
-                            <button class="btn btn-default search-button" type="submit">FIND HOTELS</button>
+                            <button class="btn btn-default search-button" (click)="goToHotelList()" type="submit"> FIND HOTELS </button>
                           </div>
                         </div>
                         <!-- END input-group -->

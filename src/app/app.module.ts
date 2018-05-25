@@ -14,6 +14,7 @@ import { CreateTripComponent } from './create-trip/create-trip.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
 import { YelpService } from './services/yelp.service';
+import { WatsonService } from './services/watson.service';
 import { DataService } from './services/data.service';
 import { LoginComponent } from './login/login.component';
 
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'index',  component: LandingPageComponent },
   { path: 'signup', component: AuthComponent },
   { path: 'login', component: AuthComponent },
-  { path: 'hotel-list', component: HotelListComponent }
+  { path: 'hotel-list/:searchTerm', component: HotelListComponent },
+  { path: 'hotel-list/:searchTerm', component: HotelDetailComponent }
 ];
 
 
@@ -47,7 +49,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
 
   ],
-  providers: [AuthService, YelpService, DataService],
+  providers: [AuthService, YelpService, DataService, WatsonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

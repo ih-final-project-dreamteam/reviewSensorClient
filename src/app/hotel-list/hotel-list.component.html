@@ -1,7 +1,8 @@
 <p>
   hotel-list works!
 </p>
-<div *ngFor = "let hotel of allTheHotels">
-  {{hotel.name}}
-  <img [src]="hotel.image_url" alt="">
+<div style = "color:black" *ngFor = "let hotel of allTheHotels">
+
+  <app-hotel-detail [oneSingleHotel]="hotel"> </app-hotel-detail>
 </div>
+

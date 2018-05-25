@@ -5,23 +5,21 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/rx';
 
 
-// service grabs info from yelp api
+// service grabs info from watson api
 @Injectable()
-export class YelpService {
+export class WatsonService {
   constructor(private http: Http) { }
   handleError(e) {
     return Observable.throw(e.json().message);
   }
 
-
-
-goToHotelList(searchVal) {
-    return this.http.get(`http://localhost:3000/yelp/${searchVal}`, {})
+getWatsonInfo(searchVal, hotelID) {
+    console.log('service is called', searchVal, hotelID);
+    return this.http.get(`http://localhost:3000/watson/${searchVal}/${hotelID}`, {})
     .map((responseFromApi) => responseFromApi.json());
 }
 
 
 
-
-
+// return this.http.get(`http://localhost:3000/api/loggedin`)
 }
