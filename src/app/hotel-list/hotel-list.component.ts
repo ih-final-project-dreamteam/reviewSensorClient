@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { YelpService } from '../services/yelp.service';
 import { Router } from '@angular/router';
-
 import { DataService } from '../services/data.service';
+
 @Component({
   selector: 'app-hotel-list',
   templateUrl: './hotel-list.component.html',

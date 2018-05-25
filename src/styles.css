@@ -24,37 +24,37 @@ h2 {
 
 /* ---------------------------------------------Navbar--------------------------------------------- */
 .landingTopnav.scrolled {
-  border-radius: 0px;
+  border-radius: 0px !important;
 }
 
 .landingTopnav.scrolled {
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  padding: 0;
+  background: rgba(0, 0, 0, 0.8) !important;
+  position: fixed !important;
+  right: 0 !important;
+  left: 0 !important;
+  top: 0 !important;
+  padding: 0 !important;
 }
 
 .topnav {
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 0px;
-  padding: 0;
-  position: relative;
-  margin-bottom: 0;
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-radius: 0px !important;
+  padding: 0 !important;
+  position: relative !important;
+  margin-bottom: 0 !important;
 }
 
 .topnav.scrolled {
-  border-radius: 0px;
+  border-radius: 0px !important;
 }
 
 .topnav.scrolled {
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  padding: 0;
+  background: rgba(0, 0, 0, 0.8) !important;
+  position: fixed !important;
+  right: 0 !important;
+  left: 0 !important;
+  top: 0 !important;
+  padding: 0 !important;
 }
 
 

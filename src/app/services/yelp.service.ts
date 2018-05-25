@@ -7,22 +7,23 @@ import { Observable } from 'rxjs/Rx';
 
 // service grabs info from yelp api and watson api
 @Injectable()
+
 export class YelpService {
+
   constructor(private http: Http) { }
-searchTerm: any = '';
+  
+  searchTerm: any = '';
+  
   handleError(e) {
     return Observable.throw(e.json().message);
   }
 
 
-
-goToHotelList(searchVal) {
+  goToHotelList(searchVal) {
     this.searchTerm = searchVal;
     return this.http.get(`http://localhost:3000/yelp/${searchVal}`, {})
     .map((responseFromApi) => responseFromApi.json());
-}
-
-
+  }
 
 
 }

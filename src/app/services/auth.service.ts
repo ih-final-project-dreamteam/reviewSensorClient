@@ -3,8 +3,6 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-// import { Observable } from 'rxjs/Observable';
-// ^this doesn't give me nice errors
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
 
 
@@ -14,6 +12,7 @@ export class AuthService {
   temporaryUser: any;
   currentUser: any;
 
+
   constructor(private http: Http) { }
 
   handleError(e) {
@@ -22,14 +21,14 @@ export class AuthService {
 
   signup(user) {
     return this.http.post(`http://localhost:3000/api/signup`, user)
-      .map(res => {console.log('service: ', res), res.json(); } )
+      .map(res => res.json())
       .catch(this.handleError);
   }
 
   login(user) {
     return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
-      .map(res => res.json());
-      // .catch(this.handleError);
+      .map(res => res.json())
+      .catch(this.handleError);
   }
 
   logout() {
