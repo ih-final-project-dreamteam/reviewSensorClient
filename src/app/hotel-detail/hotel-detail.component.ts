@@ -11,10 +11,10 @@ import { YelpService } from '../services/yelp.service';
 export class HotelDetailComponent implements OnInit {
   @Input() oneSingleHotel: any;
   theHotel: any = {};
-  show: boolean;
+  showWatson: boolean;
   constructor(private watsonService: WatsonService, public dataService: DataService,
     private router: Router) {
-    this.show = false;
+    this.showWatson = false;
   }
 
   ngOnInit() {
@@ -23,11 +23,16 @@ export class HotelDetailComponent implements OnInit {
   getWatsonInfo(hotelID) {
     this.watsonService.getWatsonInfo(this.dataService.dataFromService, hotelID)
       .subscribe(oneHotel => {
-        this.theHotel = oneHotel;
-        this.show = true;
-        console.log('ksadjhfkjdhs', this.theHotel[0].emotions);
+        this.theHotel = oneHotel[0];
+        this.showWatson = true;
+        // console.log('ksadjhfkjdhs', this.theHotel[0].emotions);
       });
     this.router.navigate([`/hotel-list/${this.dataService.dataFromService}`]);
+  }
+
+  goToCreateTrip() {
+    this.dataService.dataFromService = this.theHotel;
+    this.router.navigate([`/create-trip`]);
   }
 }
 

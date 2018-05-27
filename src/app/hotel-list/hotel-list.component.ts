@@ -29,7 +29,6 @@ export class HotelListComponent implements OnInit {
     this.yelpService.goToHotelList(this.dataService.dataFromService)
     .subscribe((theList) => {
       this.allTheHotels = theList;
-      console.log(this.allTheHotels);
     });
   }
 

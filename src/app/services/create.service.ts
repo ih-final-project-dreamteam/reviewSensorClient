@@ -7,15 +7,14 @@ import { Observable } from 'rxjs/Rx';
 
 // service grabs info from watson api
 @Injectable()
-export class WatsonService {
+export class CreateService {
   constructor(private http: Http) { }
   handleError(e) {
     return Observable.throw(e.json().message);
   }
 
-getWatsonInfo(searchVal, hotelID) {
-    console.log('service is called', searchVal, hotelID);
-    return this.http.get(`http://localhost:3000/watson/${searchVal}/${hotelID}`, {})
+createTrip(chosenHotel) {
+    return this.http.post(`http://localhost:3000/crud/create/trip`, chosenHotel)
     .map((responseFromApi) => responseFromApi.json());
 }
 

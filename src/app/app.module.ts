@@ -16,6 +16,7 @@ import { TripDetailComponent } from './trip-detail/trip-detail.component';
 import { YelpService } from './services/yelp.service';
 import { WatsonService } from './services/watson.service';
 import { DataService } from './services/data.service';
+import { CreateService } from './services/create.service';
 import { LoginComponent } from './login/login.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
@@ -26,7 +27,9 @@ const routes: Routes = [
   { path: 'signup', component: AuthComponent },
   { path: 'login', component: LoginComponent },
   { path: 'hotel-list/:searchTerm', component: HotelListComponent },
-  { path: 'hotel-list/:searchTerm', component: HotelDetailComponent }
+  { path: 'hotel-list/:searchTerm', component: HotelDetailComponent },
+  { path: 'create-trip', component: CreateTripComponent },
+  { path: 'dashboard', component: DashboardComponent }
 
 ];
 
@@ -50,7 +53,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ScrollToModule.forRoot()
   ],
-  providers: [AuthService, YelpService, DataService, WatsonService],
+  providers: [AuthService, YelpService, DataService, WatsonService, CreateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
