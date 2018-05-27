@@ -25,10 +25,9 @@ export class CreateTripComponent implements OnInit {
     this.formInfo.hotel = this.selectedHotel
     this.createService.createTrip(this.formInfo)
     .subscribe(
-      // (user) => {this.user = user;  console.log('User on signup:', this.user ); },
-      // (err) => this.error = err
-    );
-    this.router.navigate([`/dashboard`]);
+      
+    );  
+    this.router.navigate([`/dashboard/${this.user._id}`])
   }
 
 }

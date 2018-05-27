@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'hotel-list/:searchTerm', component: HotelListComponent },
   { path: 'hotel-list/:searchTerm', component: HotelDetailComponent },
   { path: 'create-trip', component: CreateTripComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard/:userId', component: DashboardComponent }
 
 ];
 

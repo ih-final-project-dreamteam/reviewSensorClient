@@ -56,9 +56,9 @@ export class AuthService {
       });
   }
 
-  // getPrivateData() {
-  //   return this.http.get(`http://localhost:3000/api/private`)
-  //     .map(res => res.json())
-  //     .catch(this.handleError);
-  // }
+  getPrivateData(userId) {
+    return this.http.get(`http://localhost:3000/api/dashboard/${userId}`)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 }
