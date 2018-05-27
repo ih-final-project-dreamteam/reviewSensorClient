@@ -102,7 +102,7 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 									el.addClass('fadeInUp probootstrap-animated');
 								}
 								el.removeClass('item-animate');
-							},  k * 50, 'easeInOutExpo' );
+							},  k * 30, 'easeInOutExpo' );
 						});
 						
 					}, 50);
