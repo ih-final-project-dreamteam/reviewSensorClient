@@ -1,3 +1,107 @@
-<p>
-  create-trip works!
-</p>
+<!-- Logged out top nav -->
+<div *ngIf="!user">
+    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
+      <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> ReviewSensor </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span>
+            <i class="ion-navicon"></i>
+          </span>
+        </button>
+        <div class="collapse navbar-collapse" id="probootstrap-menu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['index/#about']" (click)="refresh()">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/login']" (click)="refresh()">Log In</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+<!-- Logged in top nav -->
+<div *ngIf="user">
+  <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> Welcome {{ user.userFname }} </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+          <i class="ion-navicon"></i>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="probootstrap-menu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['index/#about']" (click)="refresh()">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="goToDashboard(); refresh()">My Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout(); refresh()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- END nav -->
+
+
+<div style = "color:black">
+  <p>
+     <img [src]="selectedHotel.image_url" alt="" height="500px" width="250px" >
+      {{selectedHotel.name}}
+    </p>
+</div>
+
+<section class="probootstrap_section bg-light signupContainer" id="section-contact">
+  <br><br>
+
+
+  <div class="signup">
+    <div class="col-md-5 signupForm">
+      <div>
+        <form class="probootstrap-form probootstrap-form-box">
+
+
+          <br>
+          <div class="form-group">
+              <label for="text" class="sr-only sr-only-focusable">Trip Name</label>
+              <input type="text" [(ngModel)]="formInfo.tripName" class="form-control form-field" id="tripName" name="tripName" placeholder="Name your trip"
+              />
+            </div>
+          <div class="form-group">
+              <label for="startDate" class="sr-only sr-only-focusable">Start Date</label>
+              <input type="date" [(ngModel)]="formInfo.startDate" class="form-control form-field" id="startDate" name="startDate" placeholder="Start Date MM/DD/YYYY"
+              />
+            </div>
+          <div class="form-group">
+            <label for="endDate" class="sr-only sr-only-focusable">End Date</label>
+            <input type="date" [(ngModel)]="formInfo.endDate" class="form-control form-field" id="endDate" name="endDate" placeholder="End Date MM/DD/YYYY"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="tripNotes" class="sr-only sr-only-focusable">Notes</label>
+            <input type="text" [(ngModel)]="formInfo.tripNotes" class="form-control form-field" id="tripNotes" name="tripNotes" placeholder="Notes"
+            />
+          </div>
+
+          <div class="form-group">
+            <button (click)="createTrip()" class="btn btn-primary form-control signupButton" value="Create Trip"> Create Trip </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

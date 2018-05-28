@@ -10,56 +10,56 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private myService: AuthService, private myRouter: Router) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   formInfo: any = {username: '', password: ''};
   user: any;
   error: any;
   title = 'app';
 
-ngOnInit() {
-  this.myService.isLoggedIn()
-  .then( () => {
-    this.user = this.myService.currentUser;
-    if (this.user === null) {
-      this.myRouter.navigate(['/login']);
-    } else {
-      this.myRouter.navigate(['/index']);
-    }
+  ngOnInit() {
+    this.authService.isLoggedIn()
+      .then( () => {
+        this.user = this.authService.currentUser;
+        if (this.user === null) {
+          this.router.navigate(['/login']);
+        } else {
+          this.router.navigate(['/index']);
+        }
+      })
+      .catch( err =>  {
+        console.log('error in login component =======> ', err);
+        this.router.navigate(['/login']);
+      });
 
-  } )
-  .catch( error => {
-    console.log('Error while in Login component : ', error);
-  } );
+  }
 
-}
 
   login() {
-    this.myService.login(this.formInfo)
+    this.authService.login(this.formInfo)
       .subscribe(
         () => {
-          this.user = this.myService.currentUser;
-            this.myRouter.navigate(['/index']);
+          this.user = this.authService.currentUser;
+            this.router.navigate(['/index']);
         },
         (err) => this.error = err
       );
   }
 
   logout() {
-    this.myService.logout()
+    this.authService.logout()
       .subscribe(
         () => {
           this.user = null;
-          this.formInfo = {};
         },
         (err) => this.error = err
       );
     console.log('user signed out', this.user);
-    this.myRouter.navigate(['/login']);
+    this.router.navigate(['/login']);
   }
 
   refresh(): void {
     window.location.reload();
-}
+  }
 
 }

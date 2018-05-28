@@ -13,9 +13,11 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent {
 
   constructor( private route: ActivatedRoute, private router: Router ) {}
+
   refresh(): void {
     window.location.reload();
-}
+  }
+
   // onAnchorClick ( ) {
   //   this.route.fragment.subscribe ( f => {
   //     const element = document.querySelector ( "#" + f );

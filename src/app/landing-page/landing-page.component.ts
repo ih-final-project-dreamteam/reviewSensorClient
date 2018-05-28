@@ -15,25 +15,13 @@ export class LandingPageComponent implements OnInit {
   formInfo: any = {username: '', password: ''};
   error: any;
 
-  constructor(private myService: YelpService, public dataService: DataService,
-    private router: Router, private myAuth: AuthService
+  constructor(private yelpService: YelpService, public dataService: DataService,
+    private router: Router, private authService: AuthService
   ) { }
 
   ngOnInit() {
-    // THIS SHOULD BE ADDED TO EVERY COMPONENT WE WANT TO MAKE PRIVATE. IT SHOULD NOT BE IN PUBLIC COMPONENTS.
-    // this.myAuth.isLoggedIn()
-    // .then( () => {
-    //   this.user = this.myAuth.currentUser;
-    //   if (this.user === null) {
-    //     this.router.navigate(['/login']);
-    //   }
-    //   // console.log('user in landing: ', this.user);
-    // } )
-    // .catch( err =>  {
-    //   console.log('err in landing ======= : ', err);
-    //   this.router.navigate(['/login']);
-    //  });
-
+    this.user = this.authService.currentUser;
+    console.log(this.user);
   }
 
   refresh(): void {
@@ -41,10 +29,9 @@ export class LandingPageComponent implements OnInit {
   }
 
   logout() {
-    this.myAuth.logout()
+    this.authService.logout()
     .subscribe(
     () => {this.user = null;
-      this.formInfo = {};
     },
     (err) => this.error = err
   );
@@ -53,6 +40,10 @@ export class LandingPageComponent implements OnInit {
   goToHotelList() {
     this.dataService.dataFromService = this.searchTerm;
       this.router.navigate([`/hotel-list/${this.searchTerm}`]);
+  }
+
+  goToDashboard() {
+    this.router.navigate([`/dashboard/${this.user._id}`]);
   }
 
 }

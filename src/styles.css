@@ -151,6 +151,11 @@ h2 {
   border-width: 7px 6px 0 6px;
 }
 
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: #fff transparent transparent transparent;
+  border-width: 7px 6px 0 6px;
+}
+
 .select2-container {
   width: 90px !important;
   margin-left: 5px;
