@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 
 // service grabs info from watson api
 @Injectable()
-export class CreateService {
+export class CrudService {
   constructor(private http: Http) { }
   handleError(e) {
     return Observable.throw(e.json().message);
@@ -18,4 +18,8 @@ createTrip(chosenHotel) {
     .map((responseFromApi) => responseFromApi.json());
 }
 
+updateTrip(tripId, updates) {
+  return this.http.post(`http://localhost:3000/crud/trip/update/${tripId}`, updates)
+  .map((responseFromApi) => responseFromApi.json());
+}
 }

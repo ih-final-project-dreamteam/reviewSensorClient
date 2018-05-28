@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
-import { CreateService } from '../services/create.service';
+import { CrudService } from '../services/crud.service';
 import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-create-trip',
@@ -13,7 +13,8 @@ export class CreateTripComponent implements OnInit {
    formInfo: any = {userId: '', tripName: '', startDate: '', endDate: '', tripNotes: '', hotel: {}};
    user: any;
 
-  constructor(public dataService: DataService, private router: Router, private createService: CreateService, private myService: AuthService) {
+  constructor(public dataService: DataService, private router: Router,
+    private crudService: CrudService, private myService: AuthService) {
   }
 
   ngOnInit() {
@@ -21,13 +22,11 @@ export class CreateTripComponent implements OnInit {
    this.user = this.myService.currentUser;
   }
   createTrip() {
-    this.formInfo.userId = this.user._id
-    this.formInfo.hotel = this.selectedHotel
-    this.createService.createTrip(this.formInfo)
+    this.formInfo.userId = this.user._id;
+    this.formInfo.hotel = this.selectedHotel;
+    this.crudService.createTrip(this.formInfo)
     .subscribe(
-      
-    );  
-    this.router.navigate([`/dashboard/${this.user._id}`])
+    );
+    this.router.navigate([`/dashboard/${this.user._id}`]);
   }
-
 }

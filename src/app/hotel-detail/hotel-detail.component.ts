@@ -25,7 +25,6 @@ export class HotelDetailComponent implements OnInit {
       .subscribe(oneHotel => {
         this.theHotel = oneHotel[0];
         this.showWatson = true;
-        // console.log('ksadjhfkjdhs', this.theHotel[0].emotions);
       });
     this.router.navigate([`/hotel-list/${this.dataService.dataFromService}`]);
   }

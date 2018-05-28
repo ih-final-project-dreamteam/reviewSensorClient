@@ -2,10 +2,61 @@
 <div style = "color:black"> <p>
   dashboard works!
 </p>
-
-<div *ngFor="let trip of allUserTrips"> 
+<div *ngIf = "!showForm"> 
+    <div *ngFor="let trip of allUserTrips">
   {{trip.tripName}}
+  {{trip.startDate}}
+  {{trip.endDate}}
+  {{trip.tripNotes}}
+  <button *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button>
 </div>
-
 </div>
+</div>
+<div *ngIf = "showForm" style = "color:black"> 
+    {{selectedTrip.tripName}}
+    {{selectedTrip.startDate}}
+    {{selectedTrip.endDate}}
+    {{selectedTrip.tripNotes}}
+  </div>
+<section *ngIf = "showForm" class="probootstrap_section bg-light signupContainer" id="section-contact">
+    <br><br>
 
+  
+    <div class="signup">
+      <div class="col-md-5 signupForm">
+        <div>
+          <form class="probootstrap-form probootstrap-form-box">
+  
+  
+            <br>
+            <div class="form-group">
+                <label for="text" class="sr-only sr-only-focusable">Trip Name</label>
+                <input type="text" [(ngModel)]="formInfo.tripName" class="form-control form-field" id="tripName" name="tripName" placeholder="Name your trip"
+                />
+              </div>
+            <div class="form-group">
+                <label for="startDate" class="sr-only sr-only-focusable">Start Date</label>
+                <input type="date" [(ngModel)]="formInfo.startDate" class="form-control form-field" id="startDate" name="startDate" placeholder="Start Date MM/DD/YYYY"
+                />
+              </div>
+            <div class="form-group">
+              <label for="endDate" class="sr-only sr-only-focusable">End Date</label>
+              <input type="date" [(ngModel)]="formInfo.endDate" class="form-control form-field" id="endDate" name="endDate" placeholder="End Date MM/DD/YYYY"
+              />
+            </div>
+  
+            <div class="form-group">
+              <label for="tripNotes" class="sr-only sr-only-focusable">Notes</label>
+              <input type="text" [(ngModel)]="formInfo.tripNotes" class="form-control form-field" id="tripNotes" name="tripNotes" placeholder="Notes"
+              />
+            </div>
+  
+            <div class="form-group">
+              <button (click)="updateTrip(selectedTrip)" class="btn btn-primary form-control signupButton" value="Update Trip"> Update Trip </button>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
