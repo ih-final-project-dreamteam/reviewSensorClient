@@ -44,20 +44,4 @@ export class CreateTripComponent implements OnInit {
     this.router.navigate([`/dashboard/${this.user._id}`]);
   }
 
-  logout() {
-    this.authService.logout()
-      .subscribe(
-        () => {
-          this.user = null;
-        },
-        (err) => this.error = err
-      );
-    console.log('user signed out', this.user);
-    this.router.navigate(['/login']);
-  }
-
-  goToDashboard() {
-    this.router.navigate([`/dashboard/${this.user._id}`]);
-  }
-
 }

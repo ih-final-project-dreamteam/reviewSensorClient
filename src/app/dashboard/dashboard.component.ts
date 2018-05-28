@@ -2,20 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CrudService } from '../services/crud.service';
 import { Router } from '@angular/router';
+// import { MatDialog, MatDialogRef } from '@angular/material';
+import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
+
 
 
 @Component({
+  // moduleId: module.id,
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-allUserTrips: Array<any> = [];
-user: any;
-error: any;
-showForm: boolean;
-formInfo: any = {tripName: '', startDate: '', endDate: '', tripNotes: ''};
-selectedTrip: {};
+  // dialogRef: MatDialogRef<DeleteConfirmationDialogComponent>;
+  allUserTrips: Array<any> = [];
+  user: any;
+  error: any;
+  showForm: boolean;
+  formInfo: any = {tripName: '', startDate: '', endDate: '', tripNotes: ''};
+  selectedTrip: {};
 
   constructor(private router: Router, private authService: AuthService,
     private crudService: CrudService) { this.showForm = false; }
@@ -44,6 +49,7 @@ selectedTrip: {};
     this.authService.getPrivateData(this.user._id)
     .subscribe(listOfUserTrips => {
       this.allUserTrips = listOfUserTrips;
+      console.log(this.allUserTrips);
     });
   }
 
@@ -69,24 +75,23 @@ selectedTrip: {};
     });
   }
 
-  logout() {
-    this.authService.logout()
-      .subscribe(
-        () => {
-          this.user = null;
-        },
-        (err) => this.error = err
-      );
-    console.log('user signed out', this.user);
-    this.router.navigate(['/login']);
-  }
-
-  goToDashboard() {
-    this.router.navigate([`/dashboard/${this.user._id}`]);
-  }
-
   refresh(): void {
     window.location.reload();
   }
+
+
+
+  // openConfirmationDialog() {
+  //   this.dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
+  //     disableClose: false
+  //   });
+  //   this.dialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete?';
+
+  //   this.dialogRef.afterClosed().subscribe(result => {
+  //     if (result) {
+  //     }
+  //     this.dialogRef = null;
+  //   });
+  // }
 
 }

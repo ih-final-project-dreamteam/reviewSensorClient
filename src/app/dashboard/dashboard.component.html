@@ -1,63 +1,163 @@
-<!-- Logged out top nav -->
-<div *ngIf="!user">
-    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
-      <div class="container">
-        <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> ReviewSensor </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span>
-            <i class="ion-navicon"></i>
-          </span>
-        </button>
-        <div class="collapse navbar-collapse" id="probootstrap-menu">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['index/#about']" (click)="refresh()">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/login']" (click)="refresh()">Log In</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-  
-<!-- Logged in top nav -->
-<div *ngIf="user">
-  <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> Welcome {{ user.userFname }} </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span>
-          <i class="ion-navicon"></i>
-        </span>
-      </button>
-      <div class="collapse navbar-collapse" id="probootstrap-menu">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['index/#about']" (click)="refresh()">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="goToDashboard(); refresh()">My Trips</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)="logout(); refresh()">Logout</a>
-          </li>
-        </ul>
+<app-topnav></app-topnav>
+
+<div *ngIf = "!showForm"> 
+<div class="probootstrap_section hotel-list">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <h2 class="display-4 probootstrap-section-heading list-header">My Upcoming Trips</h2>
       </div>
     </div>
-  </nav>
+
+    <!-- <div class="row"> -->
+
+      <div *ngFor = "let trip of allUserTrips | sortgrid: 'startDate'">
+
+        <div class="row probootstrap-media tripListContainer">
+          <div class="col-md-12 tripListName">
+            <h3>{{trip.tripName}}</h3>
+            <button class="btn btn-default editTrip-button" *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button>
+            <button class="btn btn-default deleteTrip-button" *ngIf = "!showForm" (click) = "deleteTrip(trip)"> Delete this Trip </button> -->
+          </div>
+
+          <div class="col-md-12 tripListDetails">
+              <div class="col-md-4 tripInfo">
+                <div class="startDate">
+                  <i class="fa fa-calendar" style="font-size:24px; color:#00CA4C"></i>
+                  <p>{{trip.startDate | date}}</p>
+                </div>
+
+                <div class="endDate">
+                  <i class="fa fa-calendar" style="font-size:24px; color:rgb(202, 0, 0)"></i>
+                  <p>{{trip.endDate | date}}</p>
+                </div>
+
+                <div class="tripNotes">
+                  <i class="fa fa-sticky-note-o" style="font-size:24px; color:#222"></i>
+                  <p>{{trip.tripNotes}}</p>
+                </div>
+              </div> <!-- END col-md-3 tripInfo -->
+
+              <div class="col-md-2 hotelTripImage">
+                <img [src]="trip.hotel.image_url" alt="{{trip.hotel.name}} image" class="img-fluid">
+              </div>
+
+              <div class="col-md-6 hotelTripInfo">
+                <h5 class="mb-3">{{trip.hotel.name}}</h5>
+                <div class="ratingContainer">
+                  <div class="stars" *ngIf="trip.hotel.rating === 0">
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div>
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === .5">
+                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div>
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === 1">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div>
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === 1.5">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div>
+                  
+                  <div class="stars" *ngIf="trip.hotel.rating === 2">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div> 
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === 2.5">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div>
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === 3">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div> 
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === 3.5">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div>
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === 4">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  </div> 
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === 4.5">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
+                  </div>
+    
+                  <div class="stars" *ngIf="trip.hotel.rating === 5">
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                    <i class="fa fa-star" style="font-size:30px"></i>
+                  </div> 
+                  <h6>{{trip.hotel.review_count}} reviews total</h6> 
+                </div> 
+                <div class="priceDiv">
+                  <p *ngIf="trip.hotel.price.length === 1">{{trip.hotel.price}} (Inexpensive)</p>
+                  <p *ngIf="trip.hotel.price.length === 2">{{trip.hotel.price}} (Moderate)</p>  
+                  <p *ngIf="trip.hotel.price.length === 3">{{trip.hotel.price}} (Pricey)</p>  
+                  <p *ngIf="trip.hotel.price.length === 4">{{trip.hotel.price}} (Ultra High-End)</p>
+                </div>
+                <div class="address">
+                  <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location}}</p>
+                </div>
+                <div class="phone">
+                  <i class="fa fa-phone" style="font-size:24px; color:#222"></i><p>{{trip.hotel.display_phone}}</p>
+                </div>
+              </div> <!-- END hotelTripInfo-->
+
+          </div>
+        </div> <!-- END tripListContainer -->
+      </div> <!-- END ngFor -->
+
+    <!-- </div> END row -->
+  </div> <!-- END container -->
+</div> <!-- END section -->
 </div>
-<!-- END nav -->
 
-
-
-<div style = "color:black"> <p>
+<!-- <div style = "color:black"> <p>
     dashboard works!
   </p>
   <div *ngIf = "!showForm"> 
@@ -67,16 +167,20 @@
     {{trip.endDate}}
     {{trip.tripNotes}}
     <button *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button>
-    <button *ngIf = "!showForm" (click) = "deleteTrip(trip)"> Delete this Trip </button>
+    <button *ngIf = "!showForm" (click) = "deleteTrip(trip)"> Delete this Trip </button> -->
+    <!-- <button *ngIf = "!showForm" (click) = "openConfirmationDialog(trip)"> Delete this Trip </button> -->
+  <!-- </div>
   </div>
-  </div>
-  </div>
+  </div> -->
+
+
   <div *ngIf = "showForm" style = "color:black"> 
       {{selectedTrip.tripName}}
       {{selectedTrip.startDate}}
       {{selectedTrip.endDate}}
       {{selectedTrip.tripNotes}}
     </div>
+
   <section *ngIf = "showForm" class="probootstrap_section bg-light signupContainer" id="section-contact">
       <br><br>
   
@@ -90,23 +194,23 @@
               <br>
               <div class="form-group">
                   <label for="text" class="sr-only sr-only-focusable">Trip Name</label>
-                  <input type="text" [(ngModel)]="formInfo.tripName" class="form-control form-field" id="tripName" name="tripName" placeholder="Name your trip"
+                  <input type="text" [(ngModel)]="formInfo.tripName" class="form-control form-field" id="tripName" name="tripName" value="selectedTrip.tripName"
                   />
                 </div>
               <div class="form-group">
                   <label for="startDate" class="sr-only sr-only-focusable">Start Date</label>
-                  <input type="date" [(ngModel)]="formInfo.startDate" class="form-control form-field" id="startDate" name="startDate" placeholder="Start Date MM/DD/YYYY"
+                  <input type="date" [(ngModel)]="formInfo.startDate" class="form-control form-field" id="startDate" name="startDate" value="Start Date MM/DD/YYYY"
                   />
                 </div>
               <div class="form-group">
                 <label for="endDate" class="sr-only sr-only-focusable">End Date</label>
-                <input type="date" [(ngModel)]="formInfo.endDate" class="form-control form-field" id="endDate" name="endDate" placeholder="End Date MM/DD/YYYY"
+                <input type="date" [(ngModel)]="formInfo.endDate" class="form-control form-field" id="endDate" name="endDate" value="End Date MM/DD/YYYY"
                 />
               </div>
     
               <div class="form-group">
                 <label for="tripNotes" class="sr-only sr-only-focusable">Notes</label>
-                <input type="text" [(ngModel)]="formInfo.tripNotes" class="form-control form-field" id="tripNotes" name="tripNotes" placeholder="Notes"
+                <input type="text" [(ngModel)]="formInfo.tripNotes" class="form-control form-field" id="tripNotes" name="tripNotes" value="Notes"
                 />
               </div>
     

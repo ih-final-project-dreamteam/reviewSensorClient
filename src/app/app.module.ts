@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { DatePipe } from '@angular/common';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
@@ -19,6 +21,8 @@ import { DataService } from './services/data.service';
 import { CrudService } from './services/crud.service';
 import { LoginComponent } from './login/login.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { TopnavComponent } from './topnav/topnav.component';
+import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
 
 
 const routes: Routes = [
@@ -34,6 +38,27 @@ const routes: Routes = [
 ];
 
 
+@Pipe({
+  name: 'sortgrid'
+})
+
+@Injectable()
+export class SortGridPipe implements PipeTransform {
+  transform(array: Array<any>, args: string): Array<any> {
+      if (typeof args[0] === 'undefined') {
+          return array;
+      }
+      let direction = args[0][0];
+      let column = args.replace('-', '');
+      array.sort((a: any, b: any) => {
+          let left = Number(new Date(a[column]));
+          let right = Number(new Date(b[column]));
+          return (direction === '-') ? right - left : left - right;
+      });
+      return array;
+  }
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,16 +69,21 @@ const routes: Routes = [
     CreateTripComponent,
     DashboardComponent,
     TripDetailComponent,
-    LoginComponent
+    LoginComponent,
+    TopnavComponent,
+    DeleteConfirmationDialogComponent,
+    SortGridPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
     ScrollToModule.forRoot()
   ],
-  providers: [AuthService, YelpService, DataService, WatsonService, CrudService],
-  bootstrap: [AppComponent]
+  providers: [AuthService, YelpService, DataService, WatsonService, CrudService, DatePipe],
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteConfirmationDialogComponent]
 })
 export class AppModule { }

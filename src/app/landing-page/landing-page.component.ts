@@ -28,22 +28,9 @@ export class LandingPageComponent implements OnInit {
     window.location.reload();
   }
 
-  logout() {
-    this.authService.logout()
-    .subscribe(
-    () => {this.user = null;
-    },
-    (err) => this.error = err
-  );
-  }
-
   goToHotelList() {
     this.dataService.dataFromService = this.searchTerm;
       this.router.navigate([`/hotel-list/${this.searchTerm}`]);
-  }
-
-  goToDashboard() {
-    this.router.navigate([`/dashboard/${this.user._id}`]);
   }
 
 }

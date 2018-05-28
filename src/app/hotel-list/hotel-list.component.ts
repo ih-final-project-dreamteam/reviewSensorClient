@@ -35,22 +35,6 @@ export class HotelListComponent implements OnInit {
     });
   }
 
-  logout() {
-    this.authService.logout()
-      .subscribe(
-        () => {
-          this.user = null;
-        },
-        (err) => this.error = err
-      );
-    console.log('user signed out', this.user);
-    this.router.navigate(['/login']);
-  }
-
-  goToDashboard() {
-    this.router.navigate([`/dashboard/${this.user._id}`]);
-  }
-
   refresh(): void {
     window.location.reload();
   }
