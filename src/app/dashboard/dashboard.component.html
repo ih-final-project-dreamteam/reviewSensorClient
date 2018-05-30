@@ -19,9 +19,10 @@
               <h3>{{trip.tripName}}</h3>
               <!-- <button class="btn btn-default editTrip-button" *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button> -->
               <!-- <button class="btn btn-default deleteTrip-button" *ngIf = "!showForm" (click) = "deleteTrip(trip)"> Delete this Trip </button> -->
-              <i class="fa fa-edit" *ngIf = "!showForm" (click) = "showEditForm(trip)" style="font-size:30px; color:#00CA4C"></i>
-            </div>
-            <div class="col-md-1 editButton">
+              <div class="editIcons">
+                <i class="fa fa-edit" *ngIf = "!showForm" (click) = "showEditForm(trip)" style="font-size:30px; color:#00CA4C"></i>
+                <i class="fa fa-trash-o" *ngIf = "!showForm" (click) = "deleteTrip(trip)" style="font-size:30px; color:rgba(202, 0, 0, 0.5)"></i>
+              </div>
             </div>
           </div>
 
@@ -147,16 +148,24 @@
                     </div> 
                     <h6>{{trip.hotel.review_count}} reviews total</h6> 
                   </div> 
-                  <div class="address">
+
+                  <div *ngIf = "trip.hotel.location.length === 1" class="address">
+                    <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location[0]}}</p>
+                  </div>
+                  <div *ngIf = "trip.hotel.location.length === 2" class="address">
+                    <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location[0]}}, {{trip.hotel.location[1]}}</p>
+                  </div>
+                  <div *ngIf = "trip.hotel.location.length === 3" class="address">
                     <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location[0]}}, {{trip.hotel.location[1]}}, {{trip.hotel.location[2]}}</p>
                   </div>
+
                   <div class="phone">
                     <i class="fa fa-phone" style="font-size:24px; color:#222"></i><p>{{trip.hotel.display_phone}}</p>
                   </div>
                 </div> <!-- END hotelTripInfo-->
 
                 <div class="col-md-12 watsonDetails">
-                  <div class="col-md-4 watsonSentiment">
+                  <div class="watsonSentiment">
                     <p>Sentiment</p>
                     <div class="positiveSentiment">
                       <h3>{{trip.hotel.watson_sentiment[0]}}%</h3>
@@ -169,7 +178,7 @@
                     </div>
                   </div>
 
-                  <div class="col-md-4 watsonKeywords">
+                  <div class="watsonKeywords">
                     <p>Top Keywords</p>
                     <div class="theKeywords">
                       <div *ngFor = "let keyword of trip.hotel.keywords | slice:0:3" class="topKeywords" style="color:#222">
@@ -181,27 +190,29 @@
                     </div>
                   </div>
                   
-                  <div class="col-md-4 watsonEmotions">
+                  <div class="watsonEmotions">
                     <p>Emotions</p>
-                      <div class="eachEmotion">
-                        <p>Anger</p>
-                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.anger}}">Anger</mat-progress-bar>
-                      </div>
-                      <div class="eachEmotion">
-                        <p>Disgust</p>
-                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.disgust}}"></mat-progress-bar>
-                      </div>
-                      <div class="eachEmotion">
-                        <p>Fear</p>
-                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.fear}}"></mat-progress-bar>
-                      </div>
-                      <div class="eachEmotion">
-                        <p>Joy</p>
-                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.joy}}"></mat-progress-bar>
-                      </div>
-                      <div class="eachEmotion">
-                        <p>Sadness</p>
-                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.sadness}}"></mat-progress-bar>
+                      <div class="emotionsContainer">
+                        <div class="eachEmotion">
+                          <p>Anger</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.anger}}">Anger</mat-progress-bar>
+                        </div>
+                        <div class="eachEmotion">
+                          <p>Disgust</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.disgust}}"></mat-progress-bar>
+                        </div>
+                        <div class="eachEmotion">
+                          <p>Fear</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.fear}}"></mat-progress-bar>
+                        </div>
+                        <div class="eachEmotion">
+                          <p>Joy</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.joy}}"></mat-progress-bar>
+                        </div>
+                        <div class="eachEmotion">
+                          <p>Sadness</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.sadness}}"></mat-progress-bar>
+                        </div>
                       </div>
                   </div>
                 </div> <!-- END watsonDetails-->

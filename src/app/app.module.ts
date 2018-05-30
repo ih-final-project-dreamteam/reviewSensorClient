@@ -21,9 +21,9 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { TopnavComponent } from './topnav/topnav.component';
 import { DatePipe } from '@angular/common';
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
-// import { MaterialModule } from './material.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MaterialModule } from './material.module';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
@@ -82,14 +82,14 @@ export class SortGridPipe implements PipeTransform {
     HttpModule,
     RouterModule.forRoot(routes),
     ScrollToModule.forRoot(),
-    // MaterialModule,
-    BrowserAnimationsModule,
-    MatProgressBarModule
+    MaterialModule,
+    // BrowserAnimationsModule,
+    // MatProgressBarModule
   ],
   exports: [
-    // MaterialModule,
+    MaterialModule,
     // BrowserAnimationsModule,
-    MatProgressBarModule
+    // MatProgressBarModule
   ],
   providers: [AuthService, YelpService, DataService, WatsonService, CrudService, DatePipe],
   bootstrap: [AppComponent],
