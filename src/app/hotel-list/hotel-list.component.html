@@ -1,4 +1,4 @@
-// this is pulling in singleHotels from the hotelDetails component
+<app-topnav></app-topnav>
 
 <div style = "color:black" *ngFor = "let hotel of allTheHotels; let first = first">
 
@@ -6,34 +6,8 @@
 </div>
 
 
-<!-- ===============TOP NAV================ -->
-<nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
-  <div class="container">
-    <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()">ReviewSensor</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span>
-        <i class="ion-navicon"></i>
-      </span>
-    </button>
-    <div class="collapse navbar-collapse logged-out-nav" id="probootstrap-menu">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" [ngx-scroll-to]="'#about'">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/login']" (click)="refresh()">Log In</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
-
-<div class="probootstrap_section hotel-list">
+<!-- <div class="probootstrap_section hotel-list">
   <div class="container">
     <div class="row mb-5">
       <div class="col-md-12">
@@ -146,13 +120,13 @@
               <p *ngIf="hotel.price.length === 4">{{hotel.price}} (Ultra High-End)</p>  
             </div>
           </div>
-        </div>
+        </div> -->
 
-      </div> <!-- END ngFor -->
+      <!-- </div> END ngFor -->
 
-    </div> <!-- END row -->
-  </div> <!-- END container -->
-</div> <!-- END section -->
+    <!-- </div> END row -->
+  <!-- </div> END container -->
+<!-- </div> END section -->
 
 
 

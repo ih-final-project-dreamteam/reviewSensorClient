@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { YelpService } from '../services/yelp.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 import { ActivatedRoute } from '@angular/router';
@@ -14,9 +15,11 @@ import { DataService } from '../services/data.service';
 export class HotelListComponent implements OnInit {
   price: String = '';
   allTheHotels: Array<any> = [];
+  error: any;
+  user: any;
 
   constructor(private yelpService: YelpService, private watsonService: WatsonService, public dataService: DataService,
-    private _route: ActivatedRoute, private router: Router) {
+    private _route: ActivatedRoute, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -38,8 +41,11 @@ export class HotelListComponent implements OnInit {
     });
   }
 
+  refresh(): void {
+    window.location.reload();
+  }
+
 
 }
-
 
 

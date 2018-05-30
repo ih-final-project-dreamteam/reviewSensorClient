@@ -12,15 +12,29 @@ export class CreateTripComponent implements OnInit {
    selectedHotel: any;
    formInfo: any = {userId: '', tripName: '', startDate: '', endDate: '', tripNotes: '', hotel: {}};
    user: any;
+   error: any;
 
   constructor(public dataService: DataService, private router: Router,
-    private crudService: CrudService, private myService: AuthService) {
+    private crudService: CrudService, private authService: AuthService) {
   }
 
   ngOnInit() {
-   this.selectedHotel = this.dataService.dataFromService;
-   this.user = this.myService.currentUser;
+
+    this.authService.isLoggedIn()
+    .then( () => {
+      this.user = this.authService.currentUser;
+      if (this.user === null) {
+        this.router.navigate(['/login']);
+      }
+    })
+    .catch( err =>  {
+      console.log('error on create component =======> ', err);
+    });
+
+    this.selectedHotel = this.dataService.dataFromService;
+    this.user = this.authService.currentUser;
   }
+
   createTrip() {
     this.formInfo.userId = this.user._id;
     this.formInfo.hotel = this.selectedHotel;

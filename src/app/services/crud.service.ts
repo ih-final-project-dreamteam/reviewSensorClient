@@ -13,13 +13,19 @@ export class CrudService {
     return Observable.throw(e.json().message);
   }
 
-createTrip(chosenHotel) {
-    return this.http.post(`http://localhost:3000/crud/create/trip`, chosenHotel)
-    .map((responseFromApi) => responseFromApi.json());
-}
+  createTrip(chosenHotel) {
+      return this.http.post(`http://localhost:3000/crud/create/trip`, chosenHotel)
+      .map((responseFromApi) => responseFromApi.json());
+  }
 
-updateTrip(tripId, updates) {
-  return this.http.post(`http://localhost:3000/crud/trip/update/${tripId}`, updates)
-  .map((responseFromApi) => responseFromApi.json());
-}
+  updateTrip(tripId, updates) {
+    return this.http.post(`http://localhost:3000/crud/trip/update/${tripId}`, updates)
+    .map((responseFromApi) => responseFromApi.json());
+  }
+
+  deleteTrip(tripId) {
+    return this.http.post(`http://localhost:3000/crud/trip/delete/${tripId}`, {})
+    .map((responseFromApi) => responseFromApi.json());
+  }
+
 }

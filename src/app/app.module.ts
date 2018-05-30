@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './auth/auth.component';
@@ -19,7 +18,13 @@ import { DataService } from './services/data.service';
 import { CrudService } from './services/crud.service';
 import { LoginComponent } from './login/login.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
-import {DatePipe} from '@angular/common';
+import { TopnavComponent } from './topnav/topnav.component';
+import { DatePipe } from '@angular/common';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
+import { MaterialModule } from './material.module';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 
 const routes: Routes = [
@@ -35,6 +40,27 @@ const routes: Routes = [
 ];
 
 
+@Pipe({
+  name: 'sortgrid'
+})
+
+@Injectable()
+export class SortGridPipe implements PipeTransform {
+  transform(array: Array<any>, args: string): Array<any> {
+      if (typeof args[0] === 'undefined') {
+          return array;
+      }
+      const direction = args[0][0];
+      const column = args.replace('-', '');
+      array.sort((a: any, b: any) => {
+        const left = Number(new Date(a[column]));
+        const right = Number(new Date(b[column]));
+        return (direction === '-') ? right - left : left - right;
+      });
+      return array;
+  }
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,14 +71,25 @@ const routes: Routes = [
     CreateTripComponent,
     DashboardComponent,
     TripDetailComponent,
-    LoginComponent
+    LoginComponent,
+    TopnavComponent,
+    SortGridPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    ScrollToModule.forRoot()
+    ScrollToModule.forRoot(),
+    MaterialModule,
+    // BrowserAnimationsModule,
+    // MatProgressBarModule
+  ],
+  exports: [
+    MaterialModule,
+    // BrowserAnimationsModule,
+    // MatProgressBarModule
   ],
   providers: [AuthService, YelpService, DataService, WatsonService, CrudService, DatePipe],
   bootstrap: [AppComponent]

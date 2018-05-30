@@ -39,6 +39,10 @@ export class HotelDetailComponent implements OnInit {
     this.dataService.dataFromService = this.theHotel;
     this.router.navigate([`/create-trip`]);
   }
+
+  refresh(): void {
+    window.location.reload();
+  }
 }
 
 
