@@ -1,24 +1,42 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit {
 
-  constructor(private myService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   formInfo: any = {username: '', userFname: '', userLname: '', password: ''};
   user: any;
   error: any;
   title = 'app';
 
+  ngOnInit() {
+    this.authService.isLoggedIn()
+      .then( () => {
+        this.user = this.authService.currentUser;
+        if (this.user === null) {
+          this.router.navigate(['/signup']);
+        } else {
+          this.router.navigate(['/index']);
+        }
+      })
+      .catch( err =>  {
+        console.log('error in signup component =======> ', err);
+        this.router.navigate(['/signup']);
+      });
+
+  }
+
 
   signup() {
-    this.myService.signup(this.formInfo)
+    this.authService.signup(this.formInfo)
       .subscribe(
         (user) => {this.user = user;  console.log('User on signup:', this.user ); },
         (err) => this.error = err
@@ -27,23 +45,6 @@ export class AuthComponent {
 
   refresh(): void {
     window.location.reload();
-}
+  }
 
 }
-
-// ==================old version==================
-
-
-//   isLoggedIn() {
-//    this.myService.isLoggedIn(this.formInfo)
-//
-
-// getPrivateData() {  // use islogdedin instead
-//   this.myService.getPrivateData()
-//     .subscribe(
-//       (data) => this.privateData = data,
-//       (err) => this.error = err
-//     );
-// }
-
-// }

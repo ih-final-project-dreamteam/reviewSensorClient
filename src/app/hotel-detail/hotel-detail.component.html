@@ -1,21 +1,26 @@
 <div>
-{{oneSingleHotel.name}}
-{{oneSingleHotel.id}}
-<img [src]="oneSingleHotel.image_url" alt="" height="500px" width="250px" (click)="getWatsonInfo(oneSingleHotel.id); ">
-</div>
-
-<div *ngIf = "show">
-  <h3>{{theHotel[0].name}}
-  {{theHotel[0].watson_sentiment}}
-
-  <span *ngFor = "let keywords of theHotel[0].keywords">
-     {{keywords.text}}
-     <br>
-  </span>
-  {{theHotel[0].emotions.sadness}}
-  {{theHotel[0].emotions.joy}}
-  {{theHotel[0].emotions.fear}}
-  {{theHotel[0].emotions.disgust}}
-  {{theHotel[0].emotions.anger}}
-  </h3>
-</div>
+  {{oneSingleHotel.name}}
+  {{oneSingleHotel.id}}
+  <img [src]="oneSingleHotel.image_url" alt="" height="500px" width="250px" (click)="getWatsonInfo(oneSingleHotel.id); ">
+  </div>
+  
+  <div *ngIf = "showWatson">
+    <h3>{{theHotel.name}}
+    positive: {{theHotel.watson_sentiment[0]}}%
+    negative: {{theHotel.watson_sentiment[1]}}%
+    <!-- only show if !== 0 -->
+    neutral: {{theHotel.watson_sentiment[2]}}%
+    <span *ngFor = "let keywords of theHotel.keywords">
+       {{keywords.text}}
+       <br>
+    </span>
+    sadness: {{theHotel.emotions.sadness}}%
+    joy: {{theHotel.emotions.joy}}%
+    fear: {{theHotel.emotions.fear}}%
+    digust: {{theHotel.emotions.disgust}}%
+    anger:{{theHotel.emotions.anger}}%
+    </h3>
+  
+    <button (click) = "goToCreateTrip()">Plan New Trip</button>
+  
+  </div>

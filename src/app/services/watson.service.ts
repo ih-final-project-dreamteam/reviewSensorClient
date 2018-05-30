@@ -19,7 +19,4 @@ getWatsonInfo(searchVal, hotelID) {
     .map((responseFromApi) => responseFromApi.json());
 }
 
-
-
-// return this.http.get(`http://localhost:3000/api/loggedin`)
 }
