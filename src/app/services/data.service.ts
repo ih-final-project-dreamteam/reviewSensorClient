@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 
-// this service is intended to grab the search term from landing page and pass onto hotels-list
+// this service is intended to grab information from a component and pass it to another
 export class DataService {
     dataFromService;
     constructor() {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CrudService } from '../services/crud.service';
+import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { MaterialModule } from '../material.module';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,20 +53,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  showEditForm(selectedTrip) {
-    this.selectedTrip = selectedTrip;
-    this.showForm = !this.showForm;
-  }
-
-  updateTrip(selectedTrip) {
-    this.showForm = !this.showForm;
-    this.crudService.updateTrip(selectedTrip._id, this.formInfo)
-    .subscribe(() => {
-      this.getUserTrips();
-      this.formInfo = {};
-    });
-  }
-
   deleteTrip(selectedTrip) {
     this.selectedTrip = selectedTrip;
     this.crudService.deleteTrip(selectedTrip._id)
@@ -74,8 +61,27 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  refresh(): void {
-    window.location.reload();
+  showEditForm(selectedTrip) {
+    this.selectedTrip = selectedTrip;
+    this.formInfo.tripName = selectedTrip.tripName;
+    console.log(selectedTrip);
+    console.log(selectedTrip.startDate);
+    this.formInfo.startDate = new Date(selectedTrip.startDate);
+    this.formInfo.endDate = selectedTrip.endDate;
+    this.formInfo.tripNotes = selectedTrip.tripNotes;
+    this.showForm = !this.showForm;
   }
+  updateTrip(selectedTrip) {
+    this.showForm = !this.showForm;
+    this.crudService.updateTrip(selectedTrip._id, this.formInfo)
+    .subscribe(() => {
+      this.getUserTrips();
+      this.formInfo = {};
+  });
+}
+
+refresh(): void {
+  window.location.reload();
+}
 
 }

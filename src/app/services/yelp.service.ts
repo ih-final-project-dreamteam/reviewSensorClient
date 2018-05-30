@@ -20,8 +20,8 @@ export class YelpService {
 
 
 
-goToHotelList(searchVal) {
-    return this.http.get(`http://localhost:3000/yelp/${searchVal}`)
+goToHotelList(searchVal, priceVal) {
+    return this.http.get(`http://localhost:3000/yelp/${searchVal}/${priceVal}`)
     .map((responseFromApi) => responseFromApi.json());
   }
 

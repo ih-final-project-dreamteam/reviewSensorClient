@@ -39,9 +39,11 @@ export class LandingPageComponent implements OnInit {
     window.location.reload();
   }
 
-  goToHotelList() {
+  goToHotelList(price) {
     this.dataService.dataFromService = this.searchTerm;
-      this.router.navigate([`/hotel-list/${this.searchTerm}`]);
+      this.router.navigate([`/hotel-list/${this.searchTerm}/${price}`]);
+      this.dataService.dataFromService = price;
+      console.log(this.dataService);
   }
 
   goToDashboard() {
