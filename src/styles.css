@@ -23,6 +23,17 @@ h2 {
 }
 
 
+/* ---------------------------------------------PAGE LOADER--------------------------------------------- */
+
+.page-loader {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url(./assets/images/loader.gif) center no-repeat #fff;
+}
 
 
 /* ---------------------------------------------Navbar--------------------------------------------- */
@@ -308,7 +319,7 @@ body {
 
 .hotelListItem img {
   width: 100% !important;
-  height: 200px !important;
+  height: 300px !important;
 }
 
 .hotelListItemContent {

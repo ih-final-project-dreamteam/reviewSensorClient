@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { DxBarGaugeModule } from 'devextreme-angular';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ChartsModule } from 'ng2-charts';
+
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './auth/auth.component';
@@ -18,6 +22,10 @@ import { DataService } from './services/data.service';
 import { CrudService } from './services/crud.service';
 import { LoginComponent } from './login/login.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { BarGaugeComponent } from './bar-gauge/bar-gauge.component';
+import { Color } from 'ng2-charts';
+import pattern from 'patternomaly';
+import Chart from 'chart.js';
 import { TopnavComponent } from './topnav/topnav.component';
 import { DatePipe } from '@angular/common';
 import { Injectable, Pipe, PipeTransform } from '@angular/core';
@@ -72,11 +80,14 @@ export class SortGridPipe implements PipeTransform {
     DashboardComponent,
     TripDetailComponent,
     LoginComponent,
+    BarGaugeComponent,
     TopnavComponent,
     SortGridPipe
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
+    DxBarGaugeModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,

@@ -3,6 +3,10 @@ import { WatsonService } from '../services/watson.service';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { YelpService } from '../services/yelp.service';
+import { MaterialModule } from '../material.module';
+
+
+
 @Component({
   selector: 'app-hotel-detail',
   templateUrl: './hotel-detail.component.html',
@@ -31,8 +35,13 @@ export class HotelDetailComponent implements OnInit {
       .subscribe(oneHotel => {
         this.theHotel = oneHotel[0];
         this.showWatson = true;
+        console.log('ksadjhfkjdhs', this.theHotel.emotions);
       });
     this.router.navigate([`/hotel-list/${this.dataService.dataFromService}/${hotel.price}`]);
+  }
+
+  toggleForm() {
+    this.showWatson = !this.showWatson;
   }
 
   goToCreateTrip() {
