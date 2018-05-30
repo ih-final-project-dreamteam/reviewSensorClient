@@ -13,9 +13,9 @@ export class WatsonService {
     return Observable.throw(e.json().message);
   }
 
-getWatsonInfo(searchVal, hotelID) {
+getWatsonInfo(searchVal, hotelID, priceVal) {
     console.log('service is called', searchVal, hotelID);
-    return this.http.get(`http://localhost:3000/watson/${searchVal}/${hotelID}`, {})
+    return this.http.get(`http://localhost:3000/watson/${searchVal}/${priceVal}/${hotelID}`, {})
     .map((responseFromApi) => responseFromApi.json());
 }
 

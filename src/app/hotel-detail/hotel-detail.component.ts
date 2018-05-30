@@ -10,6 +10,7 @@ import { YelpService } from '../services/yelp.service';
 })
 export class HotelDetailComponent implements OnInit {
   @Input() oneSingleHotel: any;
+  @Input() checked: any;
   theHotel: any = {};
   showWatson: boolean;
   constructor(private watsonService: WatsonService, public dataService: DataService,
@@ -18,24 +19,29 @@ export class HotelDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.checked) {
+      this.getWatsonInfo(this.oneSingleHotel);
+    }
   }
 
-  refresh(): void {
-    window.location.reload();
-  }
-
-  getWatsonInfo(hotelID) {
-    this.watsonService.getWatsonInfo(this.dataService.dataFromService, hotelID)
+  getWatsonInfo(hotel) {
+    console.log(hotel);
+    const searchTerm  = this.dataService.dataFromService;
+    this.watsonService.getWatsonInfo(searchTerm, hotel.id, hotel.price)
       .subscribe(oneHotel => {
         this.theHotel = oneHotel[0];
         this.showWatson = true;
       });
-    this.router.navigate([`/hotel-list/${this.dataService.dataFromService}`]);
+    this.router.navigate([`/hotel-list/${this.dataService.dataFromService}/${hotel.price}`]);
   }
 
   goToCreateTrip() {
     this.dataService.dataFromService = this.theHotel;
     this.router.navigate([`/create-trip`]);
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 }
 

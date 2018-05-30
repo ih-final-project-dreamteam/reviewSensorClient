@@ -43,5 +43,4 @@ export class CreateTripComponent implements OnInit {
     );
     this.router.navigate([`/dashboard/${this.user._id}`]);
   }
-
 }

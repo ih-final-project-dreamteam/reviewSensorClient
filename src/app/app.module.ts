@@ -32,8 +32,8 @@ const routes: Routes = [
   { path: 'index',  component: LandingPageComponent },
   { path: 'signup', component: AuthComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'hotel-list/:searchTerm', component: HotelListComponent },
-  { path: 'hotel-list/:searchTerm', component: HotelDetailComponent },
+  { path: 'hotel-list/:searchTerm/:price', component: HotelListComponent },
+  { path: 'hotel-list/:searchTerm/:price', component: HotelDetailComponent },
   { path: 'create-trip', component: CreateTripComponent },
   { path: 'dashboard/:userId', component: DashboardComponent }
 
@@ -92,6 +92,6 @@ export class SortGridPipe implements PipeTransform {
     // MatProgressBarModule
   ],
   providers: [AuthService, YelpService, DataService, WatsonService, CrudService, DatePipe],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
