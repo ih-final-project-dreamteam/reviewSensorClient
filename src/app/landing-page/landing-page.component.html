@@ -81,7 +81,7 @@
                             name="search">
 
                           <div class="form-group">
-                            <select class="js-example-basic-single js-states form-control" id="id_label_single">
+                            <select class="js-example-basic-single js-states form-control" #labelSingle>
                               <option value="$">$</option>
                               <option value="$$">$$</option>
                               <option value="$$$">$$$</option>
@@ -90,7 +90,7 @@
                           </div>
                           <div>
 
-                            <button class="btn btn-default search-button" type="submit" (click)="goToHotelList()">FIND HOTELS</button>
+                            <button class="btn btn-default search-button" type="submit" (click)="goToHotelList(labelSingle.value)">FIND HOTELS</button>
 
                           </div>
                         </div>

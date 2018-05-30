@@ -5,8 +5,8 @@
 <div *ngIf = "!showForm"> 
     <div *ngFor="let trip of allUserTrips">
   {{trip.tripName}}
-  {{trip.startDate}}
-  {{trip.endDate}}
+  {{trip.startDate | date}}
+  {{trip.endDate | date}}
   {{trip.tripNotes}}
   <button *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button>
 </div>
@@ -14,9 +14,10 @@
 </div>
 <div *ngIf = "showForm" style = "color:black"> 
     {{selectedTrip.tripName}}
-    {{selectedTrip.startDate}}
-    {{selectedTrip.endDate}}
+    {{selectedTrip.startDate | date}}
+    {{selectedTrip.endDate | date}}
     {{selectedTrip.tripNotes}}
+    {{selectedTrip.hotel.image_url}}
   </div>
 <section *ngIf = "showForm" class="probootstrap_section bg-light signupContainer" id="section-contact">
     <br><br>
@@ -31,23 +32,23 @@
             <br>
             <div class="form-group">
                 <label for="text" class="sr-only sr-only-focusable">Trip Name</label>
-                <input type="text" [(ngModel)]="formInfo.tripName" class="form-control form-field" id="tripName" name="tripName" placeholder="Name your trip"
+                <input type="text" [(ngModel)]="formInfo.tripName" class="form-control form-field" id="tripName" name="tripName"
                 />
               </div>
             <div class="form-group">
                 <label for="startDate" class="sr-only sr-only-focusable">Start Date</label>
-                <input type="date" [(ngModel)]="formInfo.startDate" class="form-control form-field" id="startDate" name="startDate" placeholder="Start Date MM/DD/YYYY"
+                <input type="date" [(ngModel)]="formInfo.startDate" class="form-control form-field" id="startDate" name="startDate" 
                 />
               </div>
             <div class="form-group">
               <label for="endDate" class="sr-only sr-only-focusable">End Date</label>
-              <input type="date" [(ngModel)]="formInfo.endDate" class="form-control form-field" id="endDate" name="endDate" placeholder="End Date MM/DD/YYYY"
+              <input type="date" [(ngModel)]="formInfo.endDate" class="form-control form-field" id="endDate" name="endDate" 
               />
             </div>
   
             <div class="form-group">
               <label for="tripNotes" class="sr-only sr-only-focusable">Notes</label>
-              <input type="text" [(ngModel)]="formInfo.tripNotes" class="form-control form-field" id="tripNotes" name="tripNotes" placeholder="Notes"
+              <input type="text" [(ngModel)]="formInfo.tripNotes" class="form-control form-field" id="tripNotes" name="tripNotes"
               />
             </div>
   

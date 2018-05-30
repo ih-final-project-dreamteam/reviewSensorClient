@@ -1,7 +1,8 @@
 <div>
 {{oneSingleHotel.name}}
 {{oneSingleHotel.id}}
-<img [src]="oneSingleHotel.image_url" alt="" height="500px" width="250px" (click)="getWatsonInfo(oneSingleHotel.id); ">
+<img [src]="oneSingleHotel.image_url" alt="" height="500px" width="250px" (click)="getWatsonInfo(oneSingleHotel)">
+<button (click)="getWatsonInfo(oneSingleHotel)">Analyze Hotel Reviews</button>
 </div>
 
 <div *ngIf = "showWatson">

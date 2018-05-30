@@ -19,6 +19,7 @@ import { DataService } from './services/data.service';
 import { CrudService } from './services/crud.service';
 import { LoginComponent } from './login/login.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import {DatePipe} from '@angular/common';
 
 
 const routes: Routes = [
@@ -26,8 +27,8 @@ const routes: Routes = [
   { path: 'index',  component: LandingPageComponent },
   { path: 'signup', component: AuthComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'hotel-list/:searchTerm', component: HotelListComponent },
-  { path: 'hotel-list/:searchTerm', component: HotelDetailComponent },
+  { path: 'hotel-list/:searchTerm/:price', component: HotelListComponent },
+  { path: 'hotel-list/:searchTerm/:price', component: HotelDetailComponent },
   { path: 'create-trip', component: CreateTripComponent },
   { path: 'dashboard/:userId', component: DashboardComponent }
 
@@ -53,7 +54,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     ScrollToModule.forRoot()
   ],
-  providers: [AuthService, YelpService, DataService, WatsonService, CrudService],
+  providers: [AuthService, YelpService, DataService, WatsonService, CrudService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

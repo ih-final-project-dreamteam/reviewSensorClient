@@ -12,7 +12,7 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./hotel-list.component.css']
 })
 export class HotelListComponent implements OnInit {
-
+  price: String = '';
   allTheHotels: Array<any> = [];
 
   constructor(private yelpService: YelpService, private watsonService: WatsonService, public dataService: DataService,
@@ -20,13 +20,19 @@ export class HotelListComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if page is reloaded with out search from landing page, set searchTerm to param in url
     if (this.dataService.dataFromService === undefined) {
+      this._route.params.forEach(param => {
+        this.price = param['price'];
+      });
+    } else {
+    this.price = this.dataService.dataFromService;
+    }
+    // if page is reloaded with out search from landing page, set searchTerm to param in url
       this._route.params.forEach(param => {
         this.dataService.dataFromService = param['searchTerm'];
       });
-    }
-    this.yelpService.goToHotelList(this.dataService.dataFromService)
+
+    this.yelpService.goToHotelList(this.dataService.dataFromService, this.price)
     .subscribe((theList) => {
       this.allTheHotels = theList;
     });
