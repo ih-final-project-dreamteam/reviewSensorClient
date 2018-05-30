@@ -14,10 +14,15 @@
       <div *ngFor = "let trip of allUserTrips | sortgrid: 'startDate'">
 
         <div class="row probootstrap-media tripListContainer">
-          <div class="col-md-12 tripListName">
-            <h3>{{trip.tripName}}</h3>
-            <button class="btn btn-default editTrip-button" *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button>
-            <button class="btn btn-default deleteTrip-button" *ngIf = "!showForm" (click) = "deleteTrip(trip)"> Delete this Trip </button> -->
+          <div class="tripHeaderSection col-md-12">
+            <div class="col-md-12 tripListName">
+              <h3>{{trip.tripName}}</h3>
+              <!-- <button class="btn btn-default editTrip-button" *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button> -->
+              <!-- <button class="btn btn-default deleteTrip-button" *ngIf = "!showForm" (click) = "deleteTrip(trip)"> Delete this Trip </button> -->
+              <i class="fa fa-edit" *ngIf = "!showForm" (click) = "showEditForm(trip)" style="font-size:30px; color:#00CA4C"></i>
+            </div>
+            <div class="col-md-1 editButton">
+            </div>
           </div>
 
           <div class="col-md-12 tripListDetails">
@@ -28,7 +33,7 @@
                 </div>
 
                 <div class="endDate">
-                  <i class="fa fa-calendar" style="font-size:24px; color:rgb(202, 0, 0)"></i>
+                  <i class="fa fa-calendar" style="font-size:24px; color:rgba(202, 0, 0, 0.5)"></i>
                   <p>{{trip.endDate | date}}</p>
                 </div>
 
@@ -36,117 +41,172 @@
                   <i class="fa fa-sticky-note-o" style="font-size:24px; color:#222"></i>
                   <p>{{trip.tripNotes}}</p>
                 </div>
-              </div> <!-- END col-md-3 tripInfo -->
+              </div> <!-- END col-md-5 tripInfo -->
 
-              <div class="col-md-2 hotelTripImage">
-                <img [src]="trip.hotel.image_url" alt="{{trip.hotel.name}} image" class="img-fluid">
-              </div>
+              <div class="col-md-8 hotelTripInfoContainer">
 
-              <div class="col-md-6 hotelTripInfo">
-                <h5 class="mb-3">{{trip.hotel.name}}</h5>
-                <div class="ratingContainer">
-                  <div class="stars" *ngIf="trip.hotel.rating === 0">
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                <div class="col-md-4 hotelTripImage">
+                  <img [src]="trip.hotel.image_url" alt="{{trip.hotel.name}} image" class="img-fluid">
+                </div>
+
+                <div class="col-md-8 hotelTripInfo">
+                  <h5 class="mb-3">{{trip.hotel.name}}</h5>
+                  <div class="priceDiv">
+                    <p *ngIf="trip.hotel.price.length === 1">{{trip.hotel.price}} (Inexpensive)</p>
+                    <p *ngIf="trip.hotel.price.length === 2">{{trip.hotel.price}} (Moderate)</p>  
+                    <p *ngIf="trip.hotel.price.length === 3">{{trip.hotel.price}} (Pricey)</p>  
+                    <p *ngIf="trip.hotel.price.length === 4">{{trip.hotel.price}} (Ultra High-End)</p>
                   </div>
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === .5">
-                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  <div class="ratingContainer">
+                    <div class="stars" *ngIf="trip.hotel.rating === 0">
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === .5">
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 1">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 1.5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+                    
+                    <div class="stars" *ngIf="trip.hotel.rating === 2">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div> 
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 2.5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 3">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div> 
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 3.5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 4">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div> 
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 4.5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                    </div> 
+                    <h6>{{trip.hotel.review_count}} reviews total</h6> 
+                  </div> 
+                  <div class="address">
+                    <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location[0]}}, {{trip.hotel.location[1]}}, {{trip.hotel.location[2]}}</p>
                   </div>
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === 1">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  <div class="phone">
+                    <i class="fa fa-phone" style="font-size:24px; color:#222"></i><p>{{trip.hotel.display_phone}}</p>
                   </div>
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === 1.5">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                </div> <!-- END hotelTripInfo-->
+
+                <div class="col-md-12 watsonDetails">
+                  <div class="col-md-4 watsonSentiment">
+                    <p>Sentiment</p>
+                    <div class="positiveSentiment">
+                      <h3>{{trip.hotel.watson_sentiment[0]}}%</h3>
+                    </div>
+                    <div class="neutralSentiment">
+                      <h3>{{trip.hotel.watson_sentiment[2]}}%</h3>
+                    </div>
+                    <div class="negativeSentiment">
+                      <h3>{{trip.hotel.watson_sentiment[1]}}%</h3>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 watsonKeywords">
+                    <p>Top Keywords</p>
+                    <div class="theKeywords">
+                      <div *ngFor = "let keyword of trip.hotel.keywords | slice:0:3" class="topKeywords" style="color:#222">
+                        <p>{{keyword.text}}</p>
+                      </div>
+                      <div *ngFor = "let keyword of trip.hotel.keywords | slice:3:6" class="secondaryKeywords" style="color:#222">
+                        <p>{{keyword.text}}</p>
+                      </div>
+                    </div>
                   </div>
                   
-                  <div class="stars" *ngIf="trip.hotel.rating === 2">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                  </div> 
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === 2.5">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
+                  <div class="col-md-4 watsonEmotions">
+                    <p>Emotions</p>
+                      <div class="eachEmotion">
+                        <p>Anger</p>
+                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.anger}}">Anger</mat-progress-bar>
+                      </div>
+                      <div class="eachEmotion">
+                        <p>Disgust</p>
+                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.disgust}}"></mat-progress-bar>
+                      </div>
+                      <div class="eachEmotion">
+                        <p>Fear</p>
+                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.fear}}"></mat-progress-bar>
+                      </div>
+                      <div class="eachEmotion">
+                        <p>Joy</p>
+                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.joy}}"></mat-progress-bar>
+                      </div>
+                      <div class="eachEmotion">
+                        <p>Sadness</p>
+                        <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.sadness}}"></mat-progress-bar>
+                      </div>
                   </div>
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === 3">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                  </div> 
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === 3.5">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                  </div>
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === 4">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star-o" style="font-size:30px"></i>
-                  </div> 
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === 4.5">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                  </div>
-    
-                  <div class="stars" *ngIf="trip.hotel.rating === 5">
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                    <i class="fa fa-star" style="font-size:30px"></i>
-                  </div> 
-                  <h6>{{trip.hotel.review_count}} reviews total</h6> 
-                </div> 
-                <div class="priceDiv">
-                  <p *ngIf="trip.hotel.price.length === 1">{{trip.hotel.price}} (Inexpensive)</p>
-                  <p *ngIf="trip.hotel.price.length === 2">{{trip.hotel.price}} (Moderate)</p>  
-                  <p *ngIf="trip.hotel.price.length === 3">{{trip.hotel.price}} (Pricey)</p>  
-                  <p *ngIf="trip.hotel.price.length === 4">{{trip.hotel.price}} (Ultra High-End)</p>
-                </div>
-                <div class="address">
-                  <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location}}</p>
-                </div>
-                <div class="phone">
-                  <i class="fa fa-phone" style="font-size:24px; color:#222"></i><p>{{trip.hotel.display_phone}}</p>
-                </div>
-              </div> <!-- END hotelTripInfo-->
+                </div> <!-- END watsonDetails-->
+
+              </div> <!-- END hotelTripInfoContainer-->
 
           </div>
         </div> <!-- END tripListContainer -->

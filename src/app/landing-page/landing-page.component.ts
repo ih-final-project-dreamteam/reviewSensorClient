@@ -20,6 +20,17 @@ export class LandingPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.authService.isLoggedIn()
+    .then( () => {
+      this.user = this.authService.currentUser;
+      if (this.user === null) {
+      }
+    })
+    .catch( err =>  {
+      console.log('error in landing component =======> ', err);
+    });
+
     this.user = this.authService.currentUser;
     console.log(this.user);
   }
@@ -31,6 +42,10 @@ export class LandingPageComponent implements OnInit {
   goToHotelList() {
     this.dataService.dataFromService = this.searchTerm;
       this.router.navigate([`/hotel-list/${this.searchTerm}`]);
+  }
+
+  goToDashboard() {
+    this.router.navigate([`/dashboard/${this.user._id}`]);
   }
 
 }

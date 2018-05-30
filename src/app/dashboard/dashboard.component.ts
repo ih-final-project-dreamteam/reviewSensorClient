@@ -2,19 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CrudService } from '../services/crud.service';
 import { Router } from '@angular/router';
-// import { MatDialog, MatDialogRef } from '@angular/material';
-import { DeleteConfirmationDialogComponent } from '../delete-confirmation-dialog/delete-confirmation-dialog.component';
+// import { MaterialModule } from '../material.module';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
 @Component({
-  // moduleId: module.id,
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  // dialogRef: MatDialogRef<DeleteConfirmationDialogComponent>;
   allUserTrips: Array<any> = [];
   user: any;
   error: any;
@@ -78,20 +77,5 @@ export class DashboardComponent implements OnInit {
   refresh(): void {
     window.location.reload();
   }
-
-
-
-  // openConfirmationDialog() {
-  //   this.dialogRef = this.dialog.open(DeleteConfirmationDialogComponent, {
-  //     disableClose: false
-  //   });
-  //   this.dialogRef.componentInstance.confirmMessage = 'Are you sure you want to delete?';
-
-  //   this.dialogRef.afterClosed().subscribe(result => {
-  //     if (result) {
-  //     }
-  //     this.dialogRef = null;
-  //   });
-  // }
 
 }

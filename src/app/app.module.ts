@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { DatePipe } from '@angular/common';
-import { Injectable, Pipe, PipeTransform } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
 import { AuthComponent } from './auth/auth.component';
@@ -22,7 +19,12 @@ import { CrudService } from './services/crud.service';
 import { LoginComponent } from './login/login.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { TopnavComponent } from './topnav/topnav.component';
-import { DeleteConfirmationDialogComponent } from './delete-confirmation-dialog/delete-confirmation-dialog.component';
+import { DatePipe } from '@angular/common';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
+// import { MaterialModule } from './material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 
 const routes: Routes = [
@@ -48,12 +50,12 @@ export class SortGridPipe implements PipeTransform {
       if (typeof args[0] === 'undefined') {
           return array;
       }
-      let direction = args[0][0];
-      let column = args.replace('-', '');
+      const direction = args[0][0];
+      const column = args.replace('-', '');
       array.sort((a: any, b: any) => {
-          let left = Number(new Date(a[column]));
-          let right = Number(new Date(b[column]));
-          return (direction === '-') ? right - left : left - right;
+        const left = Number(new Date(a[column]));
+        const right = Number(new Date(b[column]));
+        return (direction === '-') ? right - left : left - right;
       });
       return array;
   }
@@ -71,7 +73,6 @@ export class SortGridPipe implements PipeTransform {
     TripDetailComponent,
     LoginComponent,
     TopnavComponent,
-    DeleteConfirmationDialogComponent,
     SortGridPipe
   ],
   imports: [
@@ -80,10 +81,17 @@ export class SortGridPipe implements PipeTransform {
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    ScrollToModule.forRoot()
+    ScrollToModule.forRoot(),
+    // MaterialModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule
+  ],
+  exports: [
+    // MaterialModule,
+    // BrowserAnimationsModule,
+    MatProgressBarModule
   ],
   providers: [AuthService, YelpService, DataService, WatsonService, CrudService, DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteConfirmationDialogComponent]
 })
 export class AppModule { }
