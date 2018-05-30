@@ -109,16 +109,16 @@
                 
                 <div class="form-group">
                   <button  (click) = "goToCreateTrip()" class="btn btn-primary form-control signupButton" value="add to trip" type="button"> Add to Trip </button>
-                  <button (click)="toggleForm()" (click)="getWatsonInfo(oneSingleHotel.id)" class="btn btn-primary form-control signupButton" value="add to trip" type="button"> Analyze Reviews </button>
+                  <button (click)="getWatsonInfo(oneSingleHotel)" class="btn btn-primary form-control signupButton" value="add to trip" type="button"> Analyze Reviews </button>
 
                 </div>
                 
               </div>
 
-              <div *ngIf = "show">
+              <div *ngIf = "showWatson">
                 <div class="col-md-3">
                     <!-- {{theHotel[0].watson_sentiment[0]}}% // {{theHotel[0].watson_sentiment[1]}}% // {{theHotel[0].watson_sentiment[2]}}% -->
-                    <app-bar-gauge [sentimentAnalyses] = "[theHotel.watson_sentiment[1], theHotel.watson_sentiment[0], theHotel.watson_sentiment[2]]"></app-bar-gauge>
+                   <span *ngIf = "theHotel.watson_sentiment[1] !== undefined"> <app-bar-gauge [sentimentAnalyses] = "[theHotel.watson_sentiment[1], theHotel.watson_sentiment[0], theHotel.watson_sentiment[2]]"></app-bar-gauge></span>
                 </div>
 
                 <div class="col-md-2">

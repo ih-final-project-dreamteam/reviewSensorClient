@@ -26,6 +26,7 @@ export class HotelDetailComponent implements OnInit {
     if (this.checked) {
       this.getWatsonInfo(this.oneSingleHotel);
     }
+    this.theHotel = this.oneSingleHotel;
   }
 
   getWatsonInfo(hotel) {
@@ -40,9 +41,7 @@ export class HotelDetailComponent implements OnInit {
     this.router.navigate([`/hotel-list/${this.dataService.dataFromService}/${hotel.price}`]);
   }
 
-  toggleForm() {
-    this.showWatson = !this.showWatson;
-  }
+
 
   goToCreateTrip() {
     this.dataService.dataFromService = this.theHotel;

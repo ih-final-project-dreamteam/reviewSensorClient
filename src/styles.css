@@ -1,3 +1,5 @@
+
+@import '~@angular/material/prebuilt-themes/purple-green.css';
 /* COLORS USED */
 /* Transparent Header: rgba(0, 0, 0, 0.8) */
 /* White: #fff */
@@ -6,8 +8,6 @@
 
 
 /* ---------------------------------------------GLOBAL CSS--------------------------------------------- */
-@import '~@angular/material/prebuilt-themes/purple-green.css';
-
 * {
   font-family: Avenir Next;
 }

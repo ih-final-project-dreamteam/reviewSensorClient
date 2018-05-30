@@ -15,22 +15,9 @@ export class TopnavComponent implements OnInit {
 
   ngOnInit() {
 
-    this.authService.isLoggedIn()
-    .then( () => {
-      this.user = this.authService.currentUser;
-      if (this.user === null) {
-        this.router.navigate(['/login']);
-      }
-    })
-    .catch( err =>  {
-      console.log('error in topnav component =======> ', err);
-    });
-
     this.user = this.authService.currentUser;
 
   }
-
-
   logout() {
     this.authService.logout()
       .subscribe(

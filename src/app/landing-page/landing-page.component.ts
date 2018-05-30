@@ -38,7 +38,17 @@ export class LandingPageComponent implements OnInit {
   refresh(): void {
     window.location.reload();
   }
-
+  logout() {
+    this.authService.logout()
+      .subscribe(
+        () => {
+          this.user = null;
+        },
+        (err) => this.error = err
+      );
+    console.log('user signed out', this.user);
+    this.router.navigate(['/login']);
+  }
   goToHotelList(price) {
     this.dataService.dataFromService = this.searchTerm;
       this.router.navigate([`/hotel-list/${this.searchTerm}/${price}`]);
