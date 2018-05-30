@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { DxBarGaugeModule } from 'devextreme-angular';
@@ -19,13 +19,20 @@ import { TripDetailComponent } from './trip-detail/trip-detail.component';
 import { YelpService } from './services/yelp.service';
 import { WatsonService } from './services/watson.service';
 import { DataService } from './services/data.service';
+import { CrudService } from './services/crud.service';
 import { LoginComponent } from './login/login.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { BarGaugeComponent } from './bar-gauge/bar-gauge.component';
-import { MaterialModule } from './material.module';
 import { Color } from 'ng2-charts';
 import pattern from 'patternomaly';
 import Chart from 'chart.js';
+import { TopnavComponent } from './topnav/topnav.component';
+import { DatePipe } from '@angular/common';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
+import { MaterialModule } from './material.module';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 
 const routes: Routes = [
@@ -34,10 +41,33 @@ const routes: Routes = [
   { path: 'signup', component: AuthComponent },
   { path: 'login', component: LoginComponent },
   { path: 'hotel-list/:searchTerm', component: HotelListComponent },
-  { path: 'hotel-list/:searchTerm', component: HotelDetailComponent }
+  { path: 'hotel-list/:searchTerm', component: HotelDetailComponent },
+  { path: 'create-trip', component: CreateTripComponent },
+  { path: 'dashboard/:userId', component: DashboardComponent }
 
 ];
 
+
+@Pipe({
+  name: 'sortgrid'
+})
+
+@Injectable()
+export class SortGridPipe implements PipeTransform {
+  transform(array: Array<any>, args: string): Array<any> {
+      if (typeof args[0] === 'undefined') {
+          return array;
+      }
+      const direction = args[0][0];
+      const column = args.replace('-', '');
+      array.sort((a: any, b: any) => {
+        const left = Number(new Date(a[column]));
+        const right = Number(new Date(b[column]));
+        return (direction === '-') ? right - left : left - right;
+      });
+      return array;
+  }
+}
 
 @NgModule({
   declarations: [
@@ -50,25 +80,29 @@ const routes: Routes = [
     DashboardComponent,
     TripDetailComponent,
     LoginComponent,
-    BarGaugeComponent
+    BarGaugeComponent,
+    TopnavComponent,
+    SortGridPipe
   ],
   imports: [
     ChartsModule,
     BrowserModule,
     DxBarGaugeModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
     ScrollToModule.forRoot(),
-    MaterialModule
+    MaterialModule,
+    // BrowserAnimationsModule,
+    // MatProgressBarModule
   ],
   exports: [
-    MaterialModule
+    MaterialModule,
+    // BrowserAnimationsModule,
+    // MatProgressBarModule
   ],
-  providers: [AuthService, YelpService, DataService, WatsonService],
-  bootstrap: [
-    AppComponent
-  ]
+  providers: [AuthService, YelpService, DataService, WatsonService, CrudService, DatePipe],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
-

@@ -15,27 +15,36 @@ import { MaterialModule } from '../material.module';
 export class HotelDetailComponent implements OnInit {
   @Input() oneSingleHotel: any;
   theHotel: any = {};
-  show: boolean;
+  showWatson: boolean;
   constructor(private watsonService: WatsonService, public dataService: DataService,
     private router: Router) {
-    this.show = false;
+    this.showWatson = false;
   }
 
   ngOnInit() {
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
   getWatsonInfo(hotelID) {
     this.watsonService.getWatsonInfo(this.dataService.dataFromService, hotelID)
       .subscribe(oneHotel => {
         this.theHotel = oneHotel[0];
-        this.show = true;
+        this.showWatson = true;
         console.log('ksadjhfkjdhs', this.theHotel.emotions);
       });
     this.router.navigate([`/hotel-list/${this.dataService.dataFromService}`]);
   }
 
   toggleForm() {
-    this.show = !this.show;
+    this.showWatson = !this.showWatson;
+  }
+
+  goToCreateTrip() {
+    this.dataService.dataFromService = this.theHotel;
+    this.router.navigate([`/create-trip`]);
   }
 }
 

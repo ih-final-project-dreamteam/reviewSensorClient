@@ -1,6 +1,6 @@
-<!-- if the user is not logged in yet show this nav bar -->
+<!-- Logged out top nav -->
 <div *ngIf="!user">
-    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar landingTopnav" id="probootstrap-navbar">
       <div class="container">
         <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> ReviewSensor </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="probootstrap-menu">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" [routerLink]="['index/#about']" (click)="refresh()">About</a>
+              <a class="nav-link" [ngx-scroll-to]="'about'">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" [routerLink]="['/signup']" (click)="refresh()">Sign Up</a>
@@ -26,35 +26,34 @@
     </nav>
   </div>
   
-  <!-- if the user is logged in yet show this nav bar -->
-  <div *ngIf="user">
-    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar topnav" id="probootstrap-navbar">
-      <div class="container">
-        <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> Welcome {{ user.userFname }} </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span>
-            <i class="ion-navicon"></i>
-          </span>
-        </button>
-        <div class="collapse navbar-collapse" id="probootstrap-menu">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/#about']" (click)="refresh()">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" [routerLink]="['#']" (click)="refresh()">My Trips</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="logout()">Logout</a>
-            </li>
-          </ul>
-        </div>
+<!-- Logged in top nav -->
+<div *ngIf="user">
+  <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar landingTopnav" id="probootstrap-navbar">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']" (click)="refresh()"> Welcome {{ user.userFname }} </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+          <i class="ion-navicon"></i>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="probootstrap-menu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" [ngx-scroll-to]="'about'">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="goToDashboard(); refresh()">My Trips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-  </div>
-  <!-- END nav -->
-
+    </div>
+  </nav>
+</div>
+<!-- END nav -->
 
 <!-- ===========HEADER SECTION============ -->
 <section class="probootstrap-cover overflow-hidden relative" style="background-image: url('https://images.unsplash.com/photo-1445991842772-097fea258e7b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a9a4d583946e2bbbe92795a319da3611&auto=format&fit=crop&w=800&q=60');"
@@ -88,31 +87,25 @@
                               <option value="$$$$">$$$$</option>
                             </select>
                           </div>
+
                           <div>
-
                             <button class="btn btn-default search-button" type="submit" (click)="goToHotelList()">FIND HOTELS</button>
-
                           </div>
-                        </div>
-                        <!-- END input-group -->
+
+                        </div> <!-- END input-group -->
+
                       </form>
-                    </div>
-                    <!-- END probootstrap_select-wrap -->
-                  </div>
-                  <!-- END form-group div -->
-                </div>
-                <!-- END column 1 -->
-              </div>
-              <!-- END row -->
-            </div>
+                    </div> <!-- END probootstrap_select-wrap -->
+                  </div> <!-- END form-group div -->
+                </div> <!-- END column 1 -->
+              </div> <!-- END row -->
+            </div> <!-- END form-group div -->
           </form>
-        </div>
-        <!-- END search box -->
+        </div> <!-- END search box -->
       </div>
     </div>
   </div>
-</section>
-<!-- END header section -->
+</section> <!-- END header section -->
 
 
 <!-- ===========WHAT WE DO SECTION============ -->
@@ -127,7 +120,7 @@
 </section>
 
 <section class="probootstrap-section-half d-md-flex halfSection">
-  <div class="probootstrap-image order-2 probootstrap-animate halfImage" data-animate-effect="fadeIn" style="background-image: url(assets/images/img_3.jpg)"></div>
+  <div class="probootstrap-image order-2 probootstrap-animate halfImage" data-animate-effect="fadeIn" style="background-image: url(assets/images/review-scroll.gif)"></div>
   <div class="probootstrap-text textClass order-1">
     <div class="probootstrap-inner probootstrap-animate body-text inner" data-animate-effect="fadeInLeft">
       <h2 class="heading mb-4">Simple Search</h2>
@@ -145,7 +138,6 @@
   <div class="container">
     <h2 class="display-4 border-bottom underline probootstrap-section-heading justify-content-center subheading">Who We Are</h2>
     <div class="row spaceEvenly mb-5">
-      <!-- <div class="col-md-12 text-center mb-5 probootstrap-animate"> -->
       <p class="probootstrap-author profile">
         <a href="https://probootstrap.com/" target="_blank">
           <img src="assets/images/rawan.png" alt="Free Template by ProBootstrap.com" class="rounded-circle">
@@ -188,8 +180,6 @@
           </div>
         </a>
       </p>
-      <!-- </div> -->
     </div>
-  </div>
-  <!-- END container -->
+  </div> <!-- END container -->
 </section>

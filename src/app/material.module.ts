@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import {
   MatButtonModule,
   MatMenuModule,
@@ -7,6 +8,7 @@ import {
   MatCardModule,
   MatProgressBarModule
 } from '@angular/material';
+
 @NgModule({
   imports: [
     MatButtonModule,
@@ -25,4 +27,5 @@ import {
     MatProgressBarModule
   ]
 })
+
 export class MaterialModule {}

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -20,9 +21,8 @@ export class YelpService {
 
 
 goToHotelList(searchVal) {
-    return this.http.get(`http://localhost:3000/yelp/${searchVal}`, {})
+    return this.http.get(`http://localhost:3000/yelp/${searchVal}`)
     .map((responseFromApi) => responseFromApi.json());
   }
 
 } // end of service
-

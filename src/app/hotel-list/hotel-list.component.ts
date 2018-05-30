@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { YelpService } from '../services/yelp.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 import { ActivatedRoute } from '@angular/router';
@@ -15,9 +16,11 @@ import { BarGaugeComponent } from '../bar-gauge/bar-gauge.component';
 export class HotelListComponent implements OnInit {
 
   allTheHotels: Array<any> = [];
+  error: any;
+  user: any;
 
   constructor(private yelpService: YelpService, private watsonService: WatsonService, public dataService: DataService,
-    private _route: ActivatedRoute, private router: Router) {
+    private _route: ActivatedRoute, private router: Router, private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -30,12 +33,14 @@ export class HotelListComponent implements OnInit {
     this.yelpService.goToHotelList(this.dataService.dataFromService)
     .subscribe((theList) => {
       this.allTheHotels = theList;
-      console.log(this.allTheHotels);
     });
+  }
+
+  refresh(): void {
+    window.location.reload();
   }
 
 
 }
-
 
 

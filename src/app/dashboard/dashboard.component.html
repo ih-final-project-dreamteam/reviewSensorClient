@@ -1,3 +1,296 @@
-<p>
-  dashboard works!
-</p>
+<app-topnav></app-topnav>
+
+<div *ngIf = "!showForm"> 
+<div class="probootstrap_section hotel-list">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <h2 class="display-4 probootstrap-section-heading list-header">My Upcoming Trips</h2>
+      </div>
+    </div>
+
+    <!-- <div class="row"> -->
+
+      <div *ngFor = "let trip of allUserTrips | sortgrid: 'startDate'">
+
+        <div class="row probootstrap-media tripListContainer">
+          <div class="tripHeaderSection col-md-12">
+            <div class="col-md-12 tripListName">
+              <h3>{{trip.tripName}}</h3>
+              <!-- <button class="btn btn-default editTrip-button" *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button> -->
+              <!-- <button class="btn btn-default deleteTrip-button" *ngIf = "!showForm" (click) = "deleteTrip(trip)"> Delete this Trip </button> -->
+              <div class="editIcons">
+                <i class="fa fa-edit" *ngIf = "!showForm" (click) = "showEditForm(trip)" style="font-size:30px; color:#00CA4C"></i>
+                <i class="fa fa-trash-o" *ngIf = "!showForm" (click) = "deleteTrip(trip)" style="font-size:30px; color:rgba(202, 0, 0, 0.5)"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 tripListDetails">
+              <div class="col-md-4 tripInfo">
+                <div class="startDate">
+                  <i class="fa fa-calendar" style="font-size:24px; color:#00CA4C"></i>
+                  <p>{{trip.startDate | date}}</p>
+                </div>
+
+                <div class="endDate">
+                  <i class="fa fa-calendar" style="font-size:24px; color:rgba(202, 0, 0, 0.5)"></i>
+                  <p>{{trip.endDate | date}}</p>
+                </div>
+
+                <div class="tripNotes">
+                  <i class="fa fa-sticky-note-o" style="font-size:24px; color:#222"></i>
+                  <p>{{trip.tripNotes}}</p>
+                </div>
+              </div> <!-- END col-md-5 tripInfo -->
+
+              <div class="col-md-8 hotelTripInfoContainer">
+
+                <div class="col-md-4 hotelTripImage">
+                  <img [src]="trip.hotel.image_url" alt="{{trip.hotel.name}} image" class="img-fluid">
+                </div>
+
+                <div class="col-md-8 hotelTripInfo">
+                  <h5 class="mb-3">{{trip.hotel.name}}</h5>
+                  <div class="priceDiv">
+                    <p *ngIf="trip.hotel.price.length === 1">{{trip.hotel.price}} (Inexpensive)</p>
+                    <p *ngIf="trip.hotel.price.length === 2">{{trip.hotel.price}} (Moderate)</p>  
+                    <p *ngIf="trip.hotel.price.length === 3">{{trip.hotel.price}} (Pricey)</p>  
+                    <p *ngIf="trip.hotel.price.length === 4">{{trip.hotel.price}} (Ultra High-End)</p>
+                  </div>
+                  <div class="ratingContainer">
+                    <div class="stars" *ngIf="trip.hotel.rating === 0">
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === .5">
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 1">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 1.5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+                    
+                    <div class="stars" *ngIf="trip.hotel.rating === 2">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div> 
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 2.5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 3">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div> 
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 3.5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 4">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-o" style="font-size:24px"></i>
+                    </div> 
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 4.5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star-half-full" style="font-size:24px"></i>
+                    </div>
+      
+                    <div class="stars" *ngIf="trip.hotel.rating === 5">
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                      <i class="fa fa-star" style="font-size:24px"></i>
+                    </div> 
+                    <h6>{{trip.hotel.review_count}} reviews total</h6> 
+                  </div> 
+
+                  <div *ngIf = "trip.hotel.location.length === 1" class="address">
+                    <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location[0]}}</p>
+                  </div>
+                  <div *ngIf = "trip.hotel.location.length === 2" class="address">
+                    <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location[0]}}, {{trip.hotel.location[1]}}</p>
+                  </div>
+                  <div *ngIf = "trip.hotel.location.length === 3" class="address">
+                    <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{trip.hotel.location[0]}}, {{trip.hotel.location[1]}}, {{trip.hotel.location[2]}}</p>
+                  </div>
+
+                  <div class="phone">
+                    <i class="fa fa-phone" style="font-size:24px; color:#222"></i><p>{{trip.hotel.display_phone}}</p>
+                  </div>
+                </div> <!-- END hotelTripInfo-->
+
+                <div class="col-md-12 watsonDetails">
+                  <div class="watsonSentiment">
+                    <p>Sentiment</p>
+                    <div class="positiveSentiment">
+                      <h3>{{trip.hotel.watson_sentiment[0]}}%</h3>
+                    </div>
+                    <div class="neutralSentiment">
+                      <h3>{{trip.hotel.watson_sentiment[2]}}%</h3>
+                    </div>
+                    <div class="negativeSentiment">
+                      <h3>{{trip.hotel.watson_sentiment[1]}}%</h3>
+                    </div>
+                  </div>
+
+                  <div class="watsonKeywords">
+                    <p>Top Keywords</p>
+                    <div class="theKeywords">
+                      <div *ngFor = "let keyword of trip.hotel.keywords | slice:0:3" class="topKeywords" style="color:#222">
+                        <p>{{keyword.text}}</p>
+                      </div>
+                      <div *ngFor = "let keyword of trip.hotel.keywords | slice:3:6" class="secondaryKeywords" style="color:#222">
+                        <p>{{keyword.text}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="watsonEmotions">
+                    <p>Emotions</p>
+                      <div class="emotionsContainer">
+                        <div class="eachEmotion">
+                          <p>Anger</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.anger}}">Anger</mat-progress-bar>
+                        </div>
+                        <div class="eachEmotion">
+                          <p>Disgust</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.disgust}}"></mat-progress-bar>
+                        </div>
+                        <div class="eachEmotion">
+                          <p>Fear</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.fear}}"></mat-progress-bar>
+                        </div>
+                        <div class="eachEmotion">
+                          <p>Joy</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.joy}}"></mat-progress-bar>
+                        </div>
+                        <div class="eachEmotion">
+                          <p>Sadness</p>
+                          <mat-progress-bar mode="determinate" value="{{trip.hotel.emotions.sadness}}"></mat-progress-bar>
+                        </div>
+                      </div>
+                  </div>
+                </div> <!-- END watsonDetails-->
+
+              </div> <!-- END hotelTripInfoContainer-->
+
+          </div>
+        </div> <!-- END tripListContainer -->
+      </div> <!-- END ngFor -->
+
+    <!-- </div> END row -->
+  </div> <!-- END container -->
+</div> <!-- END section -->
+</div>
+
+<!-- <div style = "color:black"> <p>
+    dashboard works!
+  </p>
+  <div *ngIf = "!showForm"> 
+      <div *ngFor="let trip of allUserTrips">
+    {{trip.tripName}}
+    {{trip.startDate}}
+    {{trip.endDate}}
+    {{trip.tripNotes}}
+    <button *ngIf = "!showForm" (click) = "showEditForm(trip)"> Edit this Trip </button>
+    <button *ngIf = "!showForm" (click) = "deleteTrip(trip)"> Delete this Trip </button> -->
+    <!-- <button *ngIf = "!showForm" (click) = "openConfirmationDialog(trip)"> Delete this Trip </button> -->
+  <!-- </div>
+  </div>
+  </div> -->
+
+
+  <div *ngIf = "showForm" style = "color:black"> 
+      {{selectedTrip.tripName}}
+      {{selectedTrip.startDate}}
+      {{selectedTrip.endDate}}
+      {{selectedTrip.tripNotes}}
+    </div>
+
+  <section *ngIf = "showForm" class="probootstrap_section bg-light signupContainer" id="section-contact">
+      <br><br>
+  
+    
+      <div class="signup">
+        <div class="col-md-5 signupForm">
+          <div>
+            <form class="probootstrap-form probootstrap-form-box">
+    
+    
+              <br>
+              <div class="form-group">
+                  <label for="text" class="sr-only sr-only-focusable">Trip Name</label>
+                  <input type="text" [(ngModel)]="formInfo.tripName" class="form-control form-field" id="tripName" name="tripName" value="selectedTrip.tripName"
+                  />
+                </div>
+              <div class="form-group">
+                  <label for="startDate" class="sr-only sr-only-focusable">Start Date</label>
+                  <input type="date" [(ngModel)]="formInfo.startDate" class="form-control form-field" id="startDate" name="startDate" value="Start Date MM/DD/YYYY"
+                  />
+                </div>
+              <div class="form-group">
+                <label for="endDate" class="sr-only sr-only-focusable">End Date</label>
+                <input type="date" [(ngModel)]="formInfo.endDate" class="form-control form-field" id="endDate" name="endDate" value="End Date MM/DD/YYYY"
+                />
+              </div>
+    
+              <div class="form-group">
+                <label for="tripNotes" class="sr-only sr-only-focusable">Notes</label>
+                <input type="text" [(ngModel)]="formInfo.tripNotes" class="form-control form-field" id="tripNotes" name="tripNotes" value="Notes"
+                />
+              </div>
+    
+              <div class="form-group">
+                <button (click)="updateTrip(selectedTrip)" class="btn btn-primary form-control signupButton" value="Update Trip"> Update Trip </button>
+              </div>
+    
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
