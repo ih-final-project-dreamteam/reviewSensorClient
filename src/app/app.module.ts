@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { DxBarGaugeModule } from 'devextreme-angular';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { AuthService } from './services/auth.service';
@@ -18,6 +21,11 @@ import { WatsonService } from './services/watson.service';
 import { DataService } from './services/data.service';
 import { LoginComponent } from './login/login.component';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { BarGaugeComponent } from './bar-gauge/bar-gauge.component';
+import { MaterialModule } from './material.module';
+import { Color } from 'ng2-charts';
+import pattern from 'patternomaly';
+import Chart from 'chart.js';
 
 
 const routes: Routes = [
@@ -41,16 +49,26 @@ const routes: Routes = [
     CreateTripComponent,
     DashboardComponent,
     TripDetailComponent,
-    LoginComponent
+    LoginComponent,
+    BarGaugeComponent
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
+    DxBarGaugeModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    ScrollToModule.forRoot()
+    ScrollToModule.forRoot(),
+    MaterialModule
+  ],
+  exports: [
+    MaterialModule
   ],
   providers: [AuthService, YelpService, DataService, WatsonService],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
+

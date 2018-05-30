@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { WatsonService } from '../services/watson.service';
 import { DataService } from '../services/data.service';
+import { BarGaugeComponent } from '../bar-gauge/bar-gauge.component';
 
 @Component({
   selector: 'app-hotel-list',

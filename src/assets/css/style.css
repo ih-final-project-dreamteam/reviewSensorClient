@@ -289,7 +289,7 @@ a {
           padding-right: 15px; } }
 
 .probootstrap_section {
-  padding: 7em 0 !important;
+  /* padding: 7em 0 !important; */
   float: left;
   width: 100%; }
   .probootstrap_section.bg-light {
