@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { CrudService } from '../services/crud.service';
 import { Router } from '@angular/router';
-// import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../material.module';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+// import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 
