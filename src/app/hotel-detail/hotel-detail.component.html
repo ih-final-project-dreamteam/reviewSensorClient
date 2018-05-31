@@ -41,6 +41,9 @@
                 
               </div>
 
+              <div class = "overlay page-loader"></div> <div class = "overlay page-loader" *ngIf = "!showWatson && checked"><img  src="../../assets/images/loader.gif" alt=""></div>
+              <div class = "overlay page-loader" *ngIf = "!showWatson && clicked && !checked"><img  src="../../assets/images/loader.gif" alt=""></div>
+
               <div *ngIf = "showWatson">
           
               <div class="col-md-2">
@@ -77,21 +80,16 @@
                     <app-bar-gauge [sentimentAnalyses] = "[theHotel.watson_sentiment[1], theHotel.watson_sentiment[0], theHotel.watson_sentiment[2]]"></app-bar-gauge>
                   </div>
               </div>
-              <!-- <div class="row centered">
-                  <span style=" font-size: 10px; color: rgba(202, 0, 0, 0.5)">Negative  </span>-
-                  <span style=" font-size: 10px; color: rgba(0, 202, 76, 0.5)"> Positive  </span>-
-                  <span style=" font-size: 10px; color: rgba(253, 170, 16, 0.5)">Neutural  </span>
-              </div> -->
 
               </div>
 
-              <div class="col-md-3">
+              <div class="col-md-4 listWatsonEmotions">
                   <p>Top Keywords</p>
                   <div class="theKeywords">
                     <div *ngFor = "let keyword of theHotel.keywords | slice:0:3" class="topKeywords" style="color:#222">
                       <p>{{keyword.text}}</p>
                     </div>
-                    <div *ngFor = "let keyword of theHotel.keywords | slice:3:6" class="secondaryKeywords" style="color:#222">
+                    <div *ngFor = "let keyword of theHotel.keywords | slice:3:25" class="secondaryKeywords" style="color:#222">
                       <p>{{keyword.text}}</p>
                     </div>
                 </div>

@@ -17,9 +17,11 @@ export class HotelDetailComponent implements OnInit {
   @Input() checked: any;
   theHotel: any = {};
   showWatson: boolean;
+  clicked: boolean;
   constructor(private watsonService: WatsonService, public dataService: DataService,
     private router: Router) {
     this.showWatson = false;
+    this.clicked = false;
   }
 
   ngOnInit() {
@@ -32,6 +34,8 @@ export class HotelDetailComponent implements OnInit {
 
   getWatsonInfo(hotel) {
     console.log(hotel);
+    this.clicked = true;
+
     const searchTerm  = this.dataService.dataFromService;
     this.watsonService.getWatsonInfo(searchTerm, hotel.id, hotel.price)
       .subscribe(oneHotel => {

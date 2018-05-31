@@ -18,6 +18,8 @@ export class HotelListComponent implements OnInit {
   allTheHotels: Array<any> = [];
   error: any;
   user: any;
+  name: String = '';
+  firstLetter: String = '';
 
   constructor(private yelpService: YelpService, private watsonService: WatsonService, public dataService: DataService,
     private _route: ActivatedRoute, private router: Router, private authService: AuthService) {
@@ -34,6 +36,11 @@ export class HotelListComponent implements OnInit {
     // if page is reloaded with out search from landing page, set searchTerm to param in url
       this._route.params.forEach(param => {
         this.dataService.dataFromService = param['searchTerm'];
+        this.name = param['searchTerm'];
+        this.firstLetter = this.name[0].toUpperCase();
+        this.name = this.firstLetter + this.name.slice(1);
+
+
       });
 
     this.yelpService.goToHotelList(this.dataService.dataFromService, this.price)
