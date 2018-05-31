@@ -4,13 +4,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { ScrollToService, ScrollToConfigOptions } from '@nicky-lenaers/ngx-scroll-to';
-
+import { environment } from '../../environments/environment';
 @Injectable()
 
 export class AuthService {
   temporaryUser: any;
   currentUser: any;
-
+  baseUrl: string = environment.apiUrl;
 
   constructor(private http: Http) { }
 
@@ -19,19 +19,19 @@ export class AuthService {
   }
 
   signup(user) {
-    return this.http.post(`http://localhost:3000/api/signup`, user)
+    return this.http.post(`${this.baseUrl}/api/signup`, user)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   login(user) {
-    return this.http.post(`http://localhost:3000/api/login`, user, { withCredentials: true })
+    return this.http.post(`${this.baseUrl}/api/login`, user, { withCredentials: true })
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   logout() {
-    return this.http.delete(`http://localhost:3000/api/logout`, { withCredentials: true })
+    return this.http.delete(`${this.baseUrl}/api/logout`, { withCredentials: true })
       .map(res => {
         this.currentUser = null;
         res.json();
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return this.http.get(`http://localhost:3000/api/loggedin`, { withCredentials: true })
+    return this.http.get(`${this.baseUrl}/api/loggedin`, { withCredentials: true })
     .toPromise()
       .then(res => {
         // this.currentUser = res;
@@ -57,7 +57,7 @@ export class AuthService {
   }
 
   getPrivateData(userId) {
-    return this.http.get(`http://localhost:3000/api/dashboard/${userId}`)
+    return this.http.get(`${this.baseUrl}/api/dashboard/${userId}`)
       .map(res => res.json())
       .catch(this.handleError);
   }

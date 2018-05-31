@@ -20,7 +20,6 @@ export class LandingPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.authService.isLoggedIn()
     .then( () => {
       this.user = this.authService.currentUser;
