@@ -28,12 +28,12 @@ export class BarGaugeComponent implements OnInit {
 
   public lineChartColors: Array<any> = [
     {
-      backgroundColor: ['rgba(168, 3, 3, 0.897)', '#00CA4C', 'rgb(253, 170, 16)'],
-      borderColor: ['rgba(168, 3, 3, 0.897)', '#00CA4C', 'rgb(253, 170, 16)'],
-      pointBackgroundColor: ['rgba(168, 3, 3, 0.897)', '#00CA4C', 'rgb(253, 170, 16)'],
-      pointBorderColor: ['rgba(168, 3, 3, 0.897)', '#00CA4C', 'rgb(253, 170, 16)'],
-      pointHoverBackgroundColor: ['rgba(168, 3, 3, 0.897)', '#00CA4C', 'rgb(253, 170, 16)'],
-      pointHoverBorderColor: ['rgba(168, 3, 3, 0.897)', '#00CA4C', 'rgb(253, 170, 16)']
+      backgroundColor: ['rgba(202, 0, 0, 0.5)', 'rgba(0, 202, 76, 0.5)', 'rgba(253, 170, 16, 0.5)'],
+      borderColor: ['rgba(202, 0, 0, 0.5)', 'rgba(0, 202, 76, 0.5)', 'rgb(253, 170, 16)'],
+      pointBackgroundColor: ['rgba(202, 0, 0, 0.5)', 'rgba(0, 202, 76, 0.5)', 'rgb(253, 170, 16)'],
+      pointBorderColor: ['rgba(202, 0, 0, 0.5)', 'rgba(0, 202, 76, 0.5)', 'rgb(253, 170, 16)'],
+      pointHoverBackgroundColor: ['rgba(202, 0, 0, 0.5)', 'rgba(0, 202, 76, 0.5)', 'rgb(253, 170, 16)'],
+      pointHoverBorderColor: ['rgba(202, 0, 0, 0.5)', 'rgba(0, 202, 76, 0.5)', 'rgb(253, 170, 16)']
     },
   ];
 

@@ -26,6 +26,8 @@ export class HotelDetailComponent implements OnInit {
     if (this.checked) {
       this.getWatsonInfo(this.oneSingleHotel);
     }
+
+    this.theHotel = this.oneSingleHotel;
   }
 
   getWatsonInfo(hotel) {
@@ -35,13 +37,9 @@ export class HotelDetailComponent implements OnInit {
       .subscribe(oneHotel => {
         this.theHotel = oneHotel[0];
         this.showWatson = true;
-        console.log('ksadjhfkjdhs', this.theHotel.emotions);
+        console.log('it iscalling:', this.theHotel.emotions);
       });
     this.router.navigate([`/hotel-list/${this.dataService.dataFromService}/${hotel.price}`]);
-  }
-
-  toggleForm() {
-    this.showWatson = !this.showWatson;
   }
 
   goToCreateTrip() {
@@ -55,25 +53,4 @@ export class HotelDetailComponent implements OnInit {
 }
 
 
-// import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-// @Component({
-//   selector: 'app-single-contact',
-//   templateUrl: './single-contact.component.html',
-//   styleUrls: ['./single-contact.component.css']
-// })
-// export class SingleContactComponent implements OnInit {
-
-//   @Input() oneSingleContact: any;
-//   @Output() contactBeingDeleted = new EventEmitter <string>();
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-//   deleteCont(theContact) {
-//     this.contactBeingDeleted.emit(theContact);
-//   }
-
-//   delete
-
-// }

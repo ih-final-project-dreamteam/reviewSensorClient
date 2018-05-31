@@ -1,161 +1,108 @@
   <!-- =======================SINGLE HOTLE VIEW================================ -->
   
-  <section class="probootstrap_section hotel-list">
-        <div class="row"> 
-          <div class="col-12 hotelListItem"> 
+  <section class="probootstrap_section">
+    <div class="listContainer">
+        <div class="row mb-4"> 
+          <div class="col-12"> 
             <div class=" probootstrap-media mb-4">
               
-            <div class="probootstrap-media-image col-md-3" >
-                <img [src]="oneSingleHotel.image_url" alt="{{oneSingleHotel.name}} image" class="img-fluid"/>
+            <div class="col-md-3 hotelListItem" >
+                <img [src]="oneSingleHotel.image_url" alt="{{oneSingleHotel.name}} image" class="img-fluid" />
             </div>
   
             <div class="media-body hotelListItemContent col-md-2">
                 <h5>{{oneSingleHotel.name}}</h5>
                 
-                <div class="stars" *ngIf="oneSingleHotel.rating === 0">
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div>
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === .5">
-                  <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div>
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === 1">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div>
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === 1.5">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div>
-                
-                <div class="stars" *ngIf="oneSingleHotel.rating === 2">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div> 
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === 2.5">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div>
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === 3">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div> 
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === 3.5">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div>
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === 4">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star-o" style="font-size:30px"></i>
-                </div> 
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === 4.5">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star-half-full" style="font-size:30px"></i>
-                </div>
-  
-                <div class="stars" *ngIf="oneSingleHotel.rating === 5">
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                  <i class="fa fa-star" style="font-size:30px"></i>
-                </div> 
-  
-                <h5 *ngIf="oneSingleHotel.price.length === 1" style="color: #00CA4C">{{oneSingleHotel.price}}</h5> <!-- (Inexpensive) -->
-                <h5 *ngIf="oneSingleHotel.price.length === 2" style="color: #00CA4C">{{oneSingleHotel.price}}</h5> <!-- (Moderate) --> 
-                <h5 *ngIf="oneSingleHotel.price.length === 3" style="color: #00CA4C">{{oneSingleHotel.price}}</h5> <!--  (Pricey) -->
-                <h5 *ngIf="oneSingleHotel.price.length === 4" style="color: #00CA4C">{{oneSingleHotel.price}}</h5> <!-- (Ultra High-End) -->  
-  
+                <h5 *ngIf="oneSingleHotel.price.length === 1" style="color: #00CA4C">{{oneSingleHotel.price}} (Inexpensive) </h5>
+                <h5 *ngIf="oneSingleHotel.price.length === 2" style="color: #00CA4C">{{oneSingleHotel.price}} (Moderate)  </h5>
+                <h5 *ngIf="oneSingleHotel.price.length === 3" style="color: #00CA4C">{{oneSingleHotel.price}}  (Pricey) </h5>
+                <h5 *ngIf="oneSingleHotel.price.length === 4" style="color: #00CA4C">{{oneSingleHotel.price}} (Ultra High-End) </h5>   
+              
                 <h5>Total reviews: {{oneSingleHotel.review_count}} </h5> 
-                
+
+                <div *ngIf = "oneSingleHotel.location.length === 1" class="address">
+                    <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{oneSingleHotel.location[0]}}</p>
+                </div>
+                <div *ngIf = "oneSingleHotel.location.length === 2" class="address">
+                  <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{oneSingleHotel.location[0]}}, {{oneSingleHotel.location[1]}}</p>
+                </div>
+                <div *ngIf = "oneSingleHotel.location.length === 3" class="address">
+                  <i class="fa fa-map-marker" style="font-size:24px; color:#222"></i><p>{{oneSingleHotel.location[0]}}, {{oneSingleHotel.location[1]}}, {{oneSingleHotel.location[2]}}</p>
+                </div>
+
+                <div class="phone">
+                    <i class="fa fa-phone" style="font-size:24px; color:#222"></i><p>{{oneSingleHotel.display_phone}}</p>
+                </div>
+               
                 <div class="form-group">
                   <button  (click) = "goToCreateTrip()" class="btn btn-primary form-control signupButton" value="add to trip" type="button"> Add to Trip </button>
-                  <button (click)="toggleForm()" (click)="getWatsonInfo(oneSingleHotel.id)" class="btn btn-primary form-control signupButton" value="add to trip" type="button"> Analyze Reviews </button>
-
+                  <span *ngIf = "!checked"><button  (click)="getWatsonInfo(oneSingleHotel)" class="btn btn-primary form-control signupButton" value="analyze reviews" type="button"> Analyze Reviews </button></span>
                 </div>
                 
               </div>
 
-              <div *ngIf = "show">
-                <div class="col-md-3">
-                    <!-- {{theHotel[0].watson_sentiment[0]}}% // {{theHotel[0].watson_sentiment[1]}}% // {{theHotel[0].watson_sentiment[2]}}% -->
-                    <app-bar-gauge [sentimentAnalyses] = "[theHotel.watson_sentiment[1], theHotel.watson_sentiment[0], theHotel.watson_sentiment[2]]"></app-bar-gauge>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="fh5co-loader"></div>
-                    <div class="watsonEmotions">
-                        <p>Emotions</p>
-                          <div class="emotionsContainer">
-                            <div class="eachEmotion">
-                              <p>Anger</p>
-                              <mat-progress-bar mode="determinate" value="{{theHotel.emotions.anger}}">Anger</mat-progress-bar>
-                            </div>
-                            <div class="eachEmotion">
-                              <p>Disgust</p>
-                              <mat-progress-bar mode="determinate" value="{{theHotel.emotions.disgust}}"></mat-progress-bar>
-                            </div>
-                            <div class="eachEmotion">
-                              <p>Fear</p>
-                              <mat-progress-bar mode="determinate" value="{{theHotel.emotions.fear}}"></mat-progress-bar>
-                            </div>
-                            <div class="eachEmotion">
-                              <p>Joy</p>
-                              <mat-progress-bar mode="determinate" value="{{theHotel.emotions.joy}}"></mat-progress-bar>
-                            </div>
-                            <div class="eachEmotion">
-                              <p>Sadness</p>
-                              <mat-progress-bar mode="determinate" value="{{theHotel.emotions.sadness}}"></mat-progress-bar>
-                            </div>
+              <div *ngIf = "showWatson">
+          
+              <div class="col-md-2">
+                <div class="row">
+                  <div class="listWatsonEmotions ">
+                    <!-- <div>Emotions</div> -->
+                    <div class="emotionsContainer">
+                          <div class="eachEmotion">
+                            <p>Anger</p>
+                            <mat-progress-bar mode="determinate" value="{{theHotel.emotions.anger}}"></mat-progress-bar>
                           </div>
-                      </div>
+                          <div class="eachEmotion">
+                            <p>Disgust</p>
+                            <mat-progress-bar mode="determinate" value="{{theHotel.emotions.disgust}}"></mat-progress-bar>
+                          </div>
+                          <div class="eachEmotion">
+                            <p>Fear</p>
+                            <mat-progress-bar mode="determinate" value="{{theHotel.emotions.fear}}"></mat-progress-bar>
+                          </div>
+                          <div class="eachEmotion">
+                            <p>Joy</p>
+                            <mat-progress-bar mode="determinate" value="{{theHotel.emotions.joy}}"></mat-progress-bar>
+                          </div>
+                          <div class="eachEmotion">
+                            <p>Sadness</p>
+                            <mat-progress-bar mode="determinate" value="{{theHotel.emotions.sadness}}"></mat-progress-bar>
+                          </div>
+                        </div>
+                  </div>
                 </div>
-                  <!-- <span *ngFor = "let keywords of theHotel[0].keywords">
-           {{keywords.text}} -->
+             
+              <div class="row">
+                  <div class="col-10 listWatsonEmotions">
+                    <app-bar-gauge [sentimentAnalyses] = "[theHotel.watson_sentiment[1], theHotel.watson_sentiment[0], theHotel.watson_sentiment[2]]"></app-bar-gauge>
+                  </div>
+              </div>
+              <!-- <div class="row centered">
+                  <span style=" font-size: 10px; color: rgba(202, 0, 0, 0.5)">Negative  </span>-
+                  <span style=" font-size: 10px; color: rgba(0, 202, 76, 0.5)"> Positive  </span>-
+                  <span style=" font-size: 10px; color: rgba(253, 170, 16, 0.5)">Neutural  </span>
+              </div> -->
 
-            </div>
+              </div>
+
+              <div class="col-md-3">
+                  <p>Top Keywords</p>
+                  <div class="theKeywords">
+                    <div *ngFor = "let keyword of theHotel.keywords | slice:0:3" class="topKeywords" style="color:#222">
+                      <p>{{keyword.text}}</p>
+                    </div>
+                    <div *ngFor = "let keyword of theHotel.keywords | slice:3:6" class="secondaryKeywords" style="color:#222">
+                      <p>{{keyword.text}}</p>
+                    </div>
+                </div>
+              </div>
+
+              </div>
+
           </div>
         </div>
       </div>
+    </div>
   </section>
     <!-- END section -->
   <!-- ======================================================= -->
@@ -163,33 +110,5 @@
 
   
   <!-- ======================================================= -->
-  
 
-  <!-- <div>
-      {{oneSingleHotel.name}}
-      {{oneSingleHotel.id}}
-      <img [src]="oneSingleHotel.image_url" alt="" height="500px" width="250px" (click)="getWatsonInfo(oneSingleHotel.id); ">
-      </div> -->
-      
-      
-      <!-- <div *ngIf = "showWatson">
-          <h3>{{theHotel.name}}
-          positive: {{theHotel.watson_sentiment[0]}}%
-          negative: {{theHotel.watson_sentiment[1]}}%
-          only show if !== 0 -->
-          <!-- neutral: {{theHotel.watson_sentiment[2]}}%
-          <span *ngFor = "let keywords of theHotel.keywords">
-             {{keywords.text}}
-             <br>
-          </span>
-          sadness: {{theHotel.emotions.sadness}}%
-          joy: {{theHotel.emotions.joy}}%
-          fear: {{theHotel.emotions.fear}}%
-          digust: {{theHotel.emotions.disgust}}%
-          anger:{{theHotel.emotions.anger}}%
-          </h3>
-          <button (click) = "goToCreateTrip()">Plan New Trip</button>
-        </div> 
-       -->
-    
 

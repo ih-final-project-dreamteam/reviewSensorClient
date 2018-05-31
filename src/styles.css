@@ -319,7 +319,7 @@ body {
 
 .hotelListItem img {
   width: 100% !important;
-  height: 300px !important;
+  height: 320px !important;
 }
 
 .hotelListItemContent {
@@ -348,6 +348,31 @@ body {
 
 /* ----------------------------------------HOTEL DETAILS PAGE--------------------------------------------- */
 
+.list-container {
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%; }
+
+  
+.listWatsonEmotions {
+  background: #fff;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+  padding: 7px 24px !important;
+  margin-left: 5px;
+  color: #444;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listContainer {
+  background: #fff;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+  padding: 15px 30px !important;
+}
 
 
 /* ----------------------------------------SIGNUP/LOGIN PAGES--------------------------------------------- */

@@ -2,17 +2,23 @@
 
 <!-- ======================TITLE================================= -->
 
-<section class="probootstrap_section section" id="signupHeader">
 
+  <section class="probootstrap_section section" id="signupHeader">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-md-12">
+          <h2 class="display-4 border-bottom probootstrap-section-heading underline border-bottom-listView">Top Hotels in citynamehere</h2>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ======================END TITLE================================= -->
+  <!-- ======================END TITLE================================= -->
 
+  <!-- this is pulling in singleHotels from the hotelDetails component -->
 
+  <div style="color:black" *ngFor="let hotel of allTheHotels; let first = first">
+    <app-hotel-detail [oneSingleHotel]="hotel" [checked]="first"> </app-hotel-detail>
+  </div>
 
-<!-- this is pulling in singleHotels from the hotelDetails component -->
-
-<div style = "color:black" *ngFor = "let hotel of allTheHotels"> 
-    <app-hotel-detail [oneSingleHotel]="hotel"> </app-hotel-detail> 
-</div> 
-
-<!-- ======================================================= -->
+  <!-- ======================================================= -->
