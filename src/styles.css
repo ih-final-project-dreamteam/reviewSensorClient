@@ -290,6 +290,7 @@ body {
 .spaceEvenly {
   justify-content: space-evenly !important;
   align-items: baseline;
+  margin-bottom: 30px !important;
 }
 
 .social {
@@ -709,4 +710,90 @@ body {
 
 .eachEmotion mat-progress-bar {
   width: 115px;
+}
+
+
+
+/* ----------------------------------------CREATE/EDIT PAGES--------------------------------------------- */
+.hotelCreateEditInfoContainer {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #ECECEC !important;
+  padding-bottom: 30px;
+}
+
+.hotelCreateEditInfo {
+  margin: 0;
+}
+
+.hotelCreateEditInfo h5 {
+  font-size: 1.25em;
+}
+
+#section-contact {
+  background: #fff;
+}
+
+#createHeader {
+  background-color: #ECECEC !important;
+  padding-top: 4em !important;
+  padding-bottom: 2em !important;
+}
+
+.hotelCreateImage {
+  width: 15%;
+  margin-right: 15px;
+}
+
+#tripName #startDate #endDate #tripNotes {
+  border-radius: 0 !important;
+}
+
+.form-group input {
+  border-radius: 0 !important;
+}
+
+#editHeader {
+  background-color: #ECECEC !important;
+  padding-top: 4em !important;
+  padding-bottom: 2em !important;
+  text-transform: capitalize;
+}
+
+.editTripInfoContainer {
+  background-color: #ECECEC !important;
+  padding: 15px 30px !important;
+  padding-bottom: 4em !important;
+}
+
+.tripInfo {
+  padding: 0;
+  padding-right: 2em;
+  width: 30%;
+}
+
+.edithotelTripInfoContainer {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.editTripListDetails {
+  padding: 0;
+  flex-wrap: nowrap;
+  display: flex;
+  justify-content: center;
+}
+
+.editHotelTripImage {
+  width: 30%;
+  margin-right: 15px;
+}
+
+.editTripInfo {
+  width: 40%;
+  margin-right: 30px;
 }

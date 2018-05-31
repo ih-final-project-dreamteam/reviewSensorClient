@@ -45,7 +45,18 @@ export class LoginComponent implements OnInit {
         (err) => this.error = err
       );
   }
-
+  logout() {
+    this.authService.logout()
+      .subscribe(
+        () => {
+          this.user = null;
+        },
+        (err) => this.error = err
+      );
+    console.log('user signed out', this.user);
+    this.router.navigate(['/login']);
+  }
+  
   refresh(): void {
     window.location.reload();
   }
