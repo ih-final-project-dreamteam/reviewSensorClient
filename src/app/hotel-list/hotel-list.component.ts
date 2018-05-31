@@ -25,8 +25,10 @@ export class HotelListComponent implements OnInit {
 
   ngOnInit() {
     if (this.dataService.dataFromService === undefined) {
+      console.log('undefined');
       this._route.params.forEach(param => {
         this.price = param['price'];
+        console.log(this.price);
       });
     } else {
     this.price = this.dataService.dataFromService;

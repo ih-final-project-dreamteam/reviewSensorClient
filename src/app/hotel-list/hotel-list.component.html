@@ -11,8 +11,8 @@
 
 <!-- this is pulling in singleHotels from the hotelDetails component -->
 
-<div style = "color:black" *ngFor = "let hotel of allTheHotels"> 
-    <app-hotel-detail [oneSingleHotel]="hotel"> </app-hotel-detail> 
+<div style = "color:black" *ngFor = "let hotel of allTheHotels; let first = first"> 
+    <app-hotel-detail [oneSingleHotel]="hotel" [checked] = "first"> </app-hotel-detail> 
 </div> 
 
 <!-- ======================================================= -->

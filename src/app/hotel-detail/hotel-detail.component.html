@@ -109,16 +109,17 @@
                 
                 <div class="form-group">
                   <button  (click) = "goToCreateTrip()" class="btn btn-primary form-control signupButton" value="add to trip" type="button"> Add to Trip </button>
-                  <button (click)="getWatsonInfo(oneSingleHotel)" class="btn btn-primary form-control signupButton" value="add to trip" type="button"> Analyze Reviews </button>
+                  <span *ngIf = "!checked"><button (click)="getWatsonInfo(oneSingleHotel)" class="btn btn-primary form-control signupButton" value="add to trip" type="button"> Analyze Reviews </button></span>
 
                 </div>
                 
               </div>
-
+              <div class = "col-md-2"></div> <div class = "col-md-2 page-loader" *ngIf = "!showWatson && checked"><img src="../../assets/images/loader.gif" width ="20%" height= "20%"alt=""></div>
+              <div class = "col-md-2 page-loader" *ngIf = "!showWatson && clicked && !checked"><img src="../../assets/images/loader.gif" width ="20%" height= "20%"alt=""></div>
               <div *ngIf = "showWatson">
                 <div class="col-md-3">
                     <!-- {{theHotel[0].watson_sentiment[0]}}% // {{theHotel[0].watson_sentiment[1]}}% // {{theHotel[0].watson_sentiment[2]}}% -->
-                   <span *ngIf = "theHotel.watson_sentiment[1] !== undefined"> <app-bar-gauge [sentimentAnalyses] = "[theHotel.watson_sentiment[1], theHotel.watson_sentiment[0], theHotel.watson_sentiment[2]]"></app-bar-gauge></span>
+                    <app-bar-gauge [sentimentAnalyses] = "[theHotel.watson_sentiment[1], theHotel.watson_sentiment[0], theHotel.watson_sentiment[2]]"></app-bar-gauge>
                 </div>
 
                 <div class="col-md-2">
@@ -149,8 +150,9 @@
                           </div>
                       </div>
                 </div>
-                  <!-- <span *ngFor = "let keywords of theHotel[0].keywords">
-           {{keywords.text}} -->
+                  <span *ngFor = "let keywords of theHotel.keywords">
+                          {{keywords.text}}
+                          </span>
 
             </div>
           </div>

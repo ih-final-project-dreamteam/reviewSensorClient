@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { YelpService } from '../services/yelp.service';
 import { MaterialModule } from '../material.module';
-
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -17,12 +17,18 @@ export class HotelDetailComponent implements OnInit {
   @Input() checked: any;
   theHotel: any = {};
   showWatson: boolean;
+  price: String = '';
+  clicked: boolean;
   constructor(private watsonService: WatsonService, public dataService: DataService,
-    private router: Router) {
+    private router: Router, private _route: ActivatedRoute) {
     this.showWatson = false;
+    this.clicked = false;
   }
 
   ngOnInit() {
+    this._route.params.forEach(param => {
+      this.price = param['price'];
+    });
     if (this.checked) {
       this.getWatsonInfo(this.oneSingleHotel);
     }
@@ -31,14 +37,15 @@ export class HotelDetailComponent implements OnInit {
 
   getWatsonInfo(hotel) {
     console.log(hotel);
+    this.clicked = true;
     const searchTerm  = this.dataService.dataFromService;
-    this.watsonService.getWatsonInfo(searchTerm, hotel.id, hotel.price)
+    this.watsonService.getWatsonInfo(searchTerm, hotel, this.price)
       .subscribe(oneHotel => {
-        this.theHotel = oneHotel[0];
+        this.theHotel = oneHotel;
         this.showWatson = true;
         console.log('ksadjhfkjdhs', this.theHotel.emotions);
       });
-    this.router.navigate([`/hotel-list/${this.dataService.dataFromService}/${hotel.price}`]);
+    this.router.navigate([`/hotel-list/${this.dataService.dataFromService}/${this.price}`]);
   }
 
 

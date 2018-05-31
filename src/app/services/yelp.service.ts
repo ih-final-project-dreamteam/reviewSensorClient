@@ -21,6 +21,7 @@ export class YelpService {
 
 
 goToHotelList(searchVal, priceVal) {
+  console.log('service price:', priceVal);
     return this.http.get(`http://localhost:3000/yelp/${searchVal}/${priceVal}`)
     .map((responseFromApi) => responseFromApi.json());
   }
