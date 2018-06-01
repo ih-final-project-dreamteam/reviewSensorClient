@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://reviewsensor.herokuapp.com'
+  apiUrl: 'reviewsensortest.herokuapp.com'
 };
