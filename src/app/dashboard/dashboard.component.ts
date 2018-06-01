@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
     private crudService: CrudService) { this.showForm = false; }
 
   ngOnInit() {
-
     this.authService.isLoggedIn()
     .then( () => {
       this.user = this.authService.currentUser;
@@ -39,11 +38,8 @@ export class DashboardComponent implements OnInit {
     .catch( err =>  {
       console.log('error in dashboard component =======> ', err);
     });
-
     this.user = this.authService.currentUser;
-
   }
-
 
   getUserTrips() {
     this.authService.getPrivateData(this.user._id)

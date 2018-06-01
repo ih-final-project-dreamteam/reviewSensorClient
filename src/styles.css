@@ -22,19 +22,37 @@ h2 {
   color: #222;
 }
 
+.light-background {
+  background-color: white !important;
+}
 
 /* ---------------------------------------------PAGE LOADER--------------------------------------------- */
 
-.page-loader {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background: url(./assets/images/loader.gif) center no-repeat #fff;
+.loaders {
+  display: flex;
+  /* height: 100%;
+  width: 70%; */
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
+.page-loader {
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: #fff !important;
+  /* height: 100%; */
+}
+
+.page-loader2 {
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: #fff !important;
+}
 
 /* ---------------------------------------------Navbar--------------------------------------------- */
 .landingTopnav.scrolled {
@@ -304,10 +322,9 @@ body {
 }
 
 
-
 /* ----------------------------------------HOTEL LIST PAGE--------------------------------------------- */
 .hotel-list {
-  padding-top: 3em !important;
+  /* padding-top: 3em !important; */
 }
 
 .list-header {
@@ -320,11 +337,14 @@ body {
 
 .hotelListItem img {
   width: 100% !important;
-  height: 300px !important;
+  height: 320px !important;
 }
 
 .hotelListItemContent {
   padding: 1em !important;
+  display: flex;
+  flex-wrap: wrap;
+  width: 30%;
 }
 
 .hotelListItem p {
@@ -340,14 +360,96 @@ body {
   font-weight: 500 !important;
 }
 
+.hotelListImage {
+  margin-bottom: 20px;
+}
+
 .stars i {
   color: #00CA4C;
   margin-right: 10px;
 }
 
+#listHeader {
+  background-color: #ECECEC !important;
+  padding-top: 4em !important;
+  padding-bottom: 4em !important;
+  margin-bottom: 2em;
+}
+
 
 
 /* ----------------------------------------HOTEL DETAILS PAGE--------------------------------------------- */
+
+.list-container {
+  margin-right: 15px;
+  margin-left: 15px;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%; }
+
+  
+.listWatsonEmotions {
+  background: #fff;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+  padding: 7px 24px !important;
+  color: #444;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 0px;
+  width: 50%;
+  text-align: center;
+}
+
+.listWatsonKeywords {
+  background: #fff;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+  padding: 7px 24px !important;
+  color: #444;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 0px;
+  width: 70%;
+}
+
+.listWatsonSentiment {
+  background: #fff;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
+  padding: 7px 24px !important;
+  color: #444;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 10px;
+  width: 50%;
+}
+
+.listContainer {
+  background: #fff;
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
+  padding: 15px 30px !important;
+  height: 15%;
+}
+
+.hotelListDetails {
+  padding: 0;
+}
+
+.emotionsSentiment {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 10px;
+}
+
+.keywordsContainer {
+  width: 40%
+}
+
+.showWatson {
+  display: flex;
+}
+
 
 
 
@@ -405,6 +507,27 @@ body {
 }
 
 .signupButton-default:focus {
+  color: #fff !important;
+  background-color: #00CA4C !important;
+  border: none !important;
+  font-weight: bold !important;
+}
+
+.signupButton:hover {
+  color: #fff !important;
+  background-color: #00CA4C !important;
+  border: none !important;
+  font-weight: bold !important;
+}
+
+.signupButton:active {
+  color: #fff !important;
+  background-color: #00CA4C !important;
+  border: none !important;
+  font-weight: bold !important;
+}
+
+.signupButton:focus {
   color: #fff !important;
   background-color: #00CA4C !important;
   border: none !important;
@@ -706,10 +829,12 @@ body {
   margin: 0;
   margin-right: 10px;
   font-size: .75em;
+  width: 20%;
+  text-align: left;
 }
 
 .eachEmotion mat-progress-bar {
-  width: 115px;
+  width: 80%;
 }
 
 
@@ -739,7 +864,8 @@ body {
 #createHeader {
   background-color: #ECECEC !important;
   padding-top: 4em !important;
-  padding-bottom: 2em !important;
+  padding-bottom: 4em !important;
+  margin-bottom: 2em;
 }
 
 .hotelCreateImage {

@@ -14,12 +14,19 @@ export class TopnavComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-
-    this.user = this.authService.currentUser;
-
+    this.authService.isLoggedIn()
+    .then( () => {
+      this.user = this.authService.currentUser;
+      if (this.user === null) {
+        console.log('lkasdjflkdas');
+        // this.router.navigate(['/login']);
+      }
+    })
+    .catch( err =>  {
+      console.log('error in topnav component =======> ', err);
+      // this.router.navigate(['/login']);
+    });
   }
-
-
   logout() {
     this.authService.logout()
       .subscribe(

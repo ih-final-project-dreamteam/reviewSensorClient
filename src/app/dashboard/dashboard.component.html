@@ -2,13 +2,18 @@
 
 <div *ngIf = "!showForm"> 
 <div class="probootstrap_section hotel-list">
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-12">
-        <h2 class="display-4 probootstrap-section-heading list-header">My Upcoming Trips</h2>
+  
+  <section class="probootstrap_section section" id="createHeader">
+    <div class="container">
+      <div class="row text-center mb-5">
+        <div class="col-md-12">
+          <h2 class="display-4 border-bottom probootstrap-section-heading underline">Upcoming Trips</h2>
+        </div>
       </div>
     </div>
-
+  </section>
+  
+  <div class="container">
     <div *ngFor = "let trip of allUserTrips | sortgrid: 'startDate'">
 
       <div class="row probootstrap-media tripListContainer">
@@ -38,7 +43,7 @@
               <i class="fa fa-sticky-note-o" style="font-size:24px; color:#222"></i>
               <p>{{trip.tripNotes}}</p>
             </div>
-          </div> <!-- END col-md-5 tripInfo -->
+          </div> <!-- END col-md-4 tripInfo -->
 
           <div class="col-md-8 hotelTripInfoContainer">
 

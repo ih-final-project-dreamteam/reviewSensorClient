@@ -40,10 +40,13 @@
       <div class="collapse navbar-collapse" id="probootstrap-menu">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/']" (click)="refresh()">About</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" (click)="goToDashboard(); refresh()">My Trips</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" (click)="logout(); refresh()">Logout</a>
+            <a class="nav-link" (click)="logout()">Logout</a>
           </li>
         </ul>
       </div>
