@@ -22,6 +22,9 @@ h2 {
   color: #222;
 }
 
+.light-background {
+  background-color: white !important;
+}
 
 /* ---------------------------------------------PAGE LOADER--------------------------------------------- */
 
@@ -35,6 +38,14 @@ h2 {
   /* background: url(./assets/images/loader.gif) center no-repeat #fff; */
 }
 
+.page-loader2 {
+  position: relative;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  margin-top: 20px;
+  background-color: #fff !important;
+}
 
 /* ---------------------------------------------Navbar--------------------------------------------- */
 .landingTopnav.scrolled {
@@ -416,6 +427,8 @@ body {
   padding: 15px 30px !important;
   height: 15%;
 }
+
+
 
 
 

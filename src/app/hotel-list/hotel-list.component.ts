@@ -20,8 +20,9 @@ export class HotelListComponent implements OnInit {
   user: any;
   name: String = '';
   firstLetter: String = '';
+  showHotels: boolean;
   constructor(private yelpService: YelpService, private watsonService: WatsonService, public dataService: DataService,
-    private _route: ActivatedRoute, private router: Router, private authService: AuthService) {
+    private _route: ActivatedRoute, private router: Router, private authService: AuthService) { this.showHotels = false;
   }
 
   ngOnInit() {
@@ -44,6 +45,7 @@ export class HotelListComponent implements OnInit {
 
     this.yelpService.goToHotelList(this.dataService.dataFromService, this.price)
     .subscribe((theList) => {
+      this.showHotels = true;
       this.allTheHotels = theList;
     });
   }
