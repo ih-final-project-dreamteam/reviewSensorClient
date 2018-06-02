@@ -801,7 +801,6 @@ body {
   width: 35%;
   margin-left: 5px;
   color: #444;
-  display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -861,11 +860,17 @@ body {
   background: #fff;
 }
 
-#createHeader {
+#dashboardSectionHeader {
   background-color: #ECECEC !important;
   padding-top: 4em !important;
   padding-bottom: 4em !important;
   margin-bottom: 2em;
+}
+
+#createHeader {
+  background-color: #ECECEC !important;
+  padding-top: 4em !important;
+  padding-bottom: 4em !important;
 }
 
 .hotelCreateImage {

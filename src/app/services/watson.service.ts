@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-
+import { environment } from '../../environments/environment';
 
 // service grabs info from watson api
 @Injectable()
@@ -15,7 +15,7 @@ export class WatsonService {
 
 getWatsonInfo(searchVal, hotel, priceVal) {
     console.log('service is called', searchVal, hotel.id);
-    return this.http.post(`http://localhost:3000/watson/${searchVal}/${priceVal}/${hotel.id}`, hotel)
+    return this.http.post(`${environment.apiUrl}/watson/${searchVal}/${priceVal}/${hotel.id}`, hotel)
     .map((responseFromApi) => responseFromApi.json());
 }
 

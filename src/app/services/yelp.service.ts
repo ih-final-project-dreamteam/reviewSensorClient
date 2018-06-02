@@ -4,7 +4,7 @@ import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
-
+import { environment } from '../../environments/environment';
 
 // service grabs info from yelp api
 @Injectable()
@@ -22,7 +22,7 @@ export class YelpService {
 
 goToHotelList(searchVal, priceVal) {
   console.log('service price:', priceVal);
-    return this.http.get(`http://localhost:3000/yelp/${searchVal}/${priceVal}`)
+    return this.http.get(`${environment.apiUrl}/yelp/${searchVal}/${priceVal}`)
     .map((responseFromApi) => responseFromApi.json());
   }
 
